@@ -18,9 +18,9 @@ public class PersonnageController : MonoBehaviour
     void Update()
     {
         rotation = 0;
-        
+
         if(Input.GetKeyDown(KeyCode.W))
-            transform.Translate(Vector3.forward * Time.deltaTime * uniteDeplacement);
+            transform.Translate(Vector3.forward * uniteDeplacement);
         if(Input.GetKeyDown(KeyCode.A))
             rotation = rotationGauche;
         else if(Input.GetKeyDown(KeyCode.D))
