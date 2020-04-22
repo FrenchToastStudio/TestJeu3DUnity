@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PersonnageController : MonoBehaviour
 {
-    public float vitesse = 5;
-    public float uniteDeplacement = 1;
+    public float uniteDeplacement = 50.0f;
+    private float rotation;
+    private float rotationGauche = -90.0f;
+    private float rotationDroite = 90.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,16 @@ public class PersonnageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("Vertical") == 1)
-            transform.Translate(Vector3.forward * Time.deltaTime);
+        rotation = 0;
+        
+        if(Input.GetKeyDown(KeyCode.W))
+            transform.Translate(Vector3.forward * Time.deltaTime * uniteDeplacement);
+        if(Input.GetKeyDown(KeyCode.A))
+            rotation = rotationGauche;
+        else if(Input.GetKeyDown(KeyCode.D))
+            rotation = rotationDroite;
+
+        transform.Rotate(Vector3.up, rotation);
+
     }
 }
