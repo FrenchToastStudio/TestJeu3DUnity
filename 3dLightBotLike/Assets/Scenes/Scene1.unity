@@ -450,3 +450,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniteDeplacement: 1
+  animateur: {fileID: 6486054974305702808}
+--- !u!95 &6486054974305702808 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7972591078316964214, guid: efa8acdbdb286832b8176ed38148c428,
+    type: 3}
+  m_PrefabInstance: {fileID: 3887200862554351950}
+  m_PrefabAsset: {fileID: 0}
