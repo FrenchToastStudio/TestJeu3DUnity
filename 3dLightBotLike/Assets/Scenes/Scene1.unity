@@ -123,9 +123,9 @@ GameObject:
   - component: {fileID: 131779428}
   - component: {fileID: 131779427}
   - component: {fileID: 131779426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: sol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -377,12 +377,12 @@ PrefabInstance:
     - target: {fileID: 8063313874202246050, guid: efa8acdbdb286832b8176ed38148c428,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8063313874202246050, guid: efa8acdbdb286832b8176ed38148c428,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.89
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8063313874202246050, guid: efa8acdbdb286832b8176ed38148c428,
         type: 3}
@@ -460,7 +460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniteDeplacement: 40
-  hauteurSaut: 7
+  hauteurSaut: 4
+  uniteDeplacementSaut: 1
   animateur: {fileID: 6486054974305702808}
 --- !u!95 &6486054974305702808 stripped
 Animator:
