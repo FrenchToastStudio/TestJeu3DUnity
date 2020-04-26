@@ -5,19 +5,20 @@ using UnityEngine;
 
 public class PersonnageController : MonoBehaviour
 {
-    public float uniteDeplacement = 40.0f;
-    public float hauteurSaut = 5f;
-    public float uniteDeplacementSaut = 1f;
+    private static float uniteDeplacement = 1f;
+    private static float hauteurSaut = 4f;
+    public GameObject personnage;
     public Animator animateur;
     private float rotation;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
 
-    Vector3 positionDepart;
-    Vector3 destination;
+    static Vector3 positionDepart;
+    static Vector3 destination;
 
     Rigidbody rigidbody;
     BoxCollider boxCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +40,7 @@ public class PersonnageController : MonoBehaviour
 
         // Gestion du déplacement vers l'avant
         if(Input.GetKeyDown(KeyCode.W)){
-            destination = positionDepart + (transform.forward * uniteDeplacement * Time.deltaTime);
+            destination = positionDepart + (transform.forward * uniteDeplacement);
             animateur.SetBool("marche", true);
             StartCoroutine (deplacement (destination, 0.4f));
         }
@@ -49,7 +50,7 @@ public class PersonnageController : MonoBehaviour
             animateur.SetBool("saute", true);
             animateur.SetBool("estAuSol", false);
             rigidbody.AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
-            rigidbody.AddForce(transform.forward * uniteDeplacementSaut, ForceMode.Impulse);            
+            rigidbody.AddForce(transform.forward * uniteDeplacement, ForceMode.Impulse);            
         }
 
         // Gestion de la rotation du personnage 
@@ -69,8 +70,25 @@ public class PersonnageController : MonoBehaviour
         }
     }
 
+    // public static void Saute (GameObject personnage, Animator animateur){
+    //     animateur.SetBool("saute", true);
+    //     animateur.SetBool("estAuSol", false);
+    //     personnage.GetComponent<Rigidbody>().AddForce(Vector3.up * 5, ForceMode.Impulse);
+    //     personnage.GetComponent<Rigidbody>().AddForce(personnage.transform.forward * 1, ForceMode.Impulse);
+    // }
+
+    // public static void Avance (GameObject personnage, Animator animateur, Vector3 destination){
+    //     //destination = positionDepart + (personnage.transform.forward * uniteDeplacement);
+    //     animateur.SetBool("marche", true);
+    //     while (personnage.transform.position != destination){
+    //         personnage.transform.position = Vector3.MoveTowards(personnage.transform.position, destination, 10f * Time.deltaTime); 
+    //     }
+    //     animateur.SetBool("marche", false);
+    // }
+
     void OnCollisionEnter(Collision collision){
         animateur.SetBool("estAuSol", true);
-        
     }
+
+    
 }
