@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/DevParcour.unity
+- path: Assets/Scene/DevFinNiveau.unity
   isLoaded: 1
   isActive: 1
