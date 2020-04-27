@@ -67,6 +67,7 @@ public class PersonnageController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime); 
             yield return new WaitForEndOfFrame ();
         }
+        animateur.SetBool("marche", false);
     }
 
     void OnCollisionEnter(Collision collision){
