@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PersonnageController : MonoBehaviour
 {
-    public float uniteDeplacement = 40.0f;
-    public float hauteurSaut = 5f;
-    public float uniteDeplacementSaut = 1f;
+    public float uniteDeplacement = 1f;
+    public float hauteurSaut = 4.5f;
+    public float uniteDeplacementSaut = 1.25f;
     public Animator animateur;
     private float rotation;
     private float rotationGauche = -90.0f;
@@ -18,6 +18,9 @@ public class PersonnageController : MonoBehaviour
 
     Rigidbody rigidbody;
     BoxCollider boxCollider;
+
+    bool marche = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,16 +37,24 @@ public class PersonnageController : MonoBehaviour
         if(rigidbody.velocity.y < 0)
             animateur.SetBool("saute", false);
 
-        if(positionDepart == destination)
+        if(positionDepart == destination){
             animateur.SetBool("marche", false);
+            marche = false;
+        }
+            
 
         // Gestion du déplacement vers l'avant
         if(Input.GetKeyDown(KeyCode.W)){
-            destination = positionDepart + (transform.forward * uniteDeplacement * Time.deltaTime);
-            animateur.SetBool("marche", true);
-            StartCoroutine (deplacement (destination, 0.4f));
+            destination = transform.position + (transform.forward);
+            marche = true;
         }
 
+        if (marche){
+            animateur.SetBool("marche", true);
+            transform.position = Vector3.MoveTowards(transform.position, destination, 0.5f * Time.deltaTime);
+            print("marche termine");
+        }
+            
         // Gestion d'un saut
         if(Input.GetKeyDown(KeyCode.X)){
             animateur.SetBool("saute", true);
@@ -62,16 +73,7 @@ public class PersonnageController : MonoBehaviour
 
     }
 
-    public IEnumerator deplacement (Vector3 end, float speed){
-        while (transform.position != end){
-            transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime); 
-            yield return new WaitForEndOfFrame ();
-        }
-        animateur.SetBool("marche", false);
-    }
-
     void OnCollisionEnter(Collision collision){
-        animateur.SetBool("estAuSol", true);
-        
+        animateur.SetBool("estAuSol", true);  
     }
 }
