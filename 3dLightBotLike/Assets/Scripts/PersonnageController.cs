@@ -5,21 +5,27 @@ using UnityEngine;
 
 public class PersonnageController : MonoBehaviour
 {
-    public float uniteDeplacement = 1f;
-    public float hauteurSaut = 4.5f;
-    public float uniteDeplacementSaut = 1.25f;
-    public Animator animateur;
+    
+    [SerializeField]
+    private float uniteDeplacement = 1f;
+    [SerializeField]
+    private float hauteurSaut = 4.5f;
+    [SerializeField]
+    private float uniteDeplacementSaut = 1.25f;
+    [SerializeField]
+    private Animator animateur;
+    
     private float rotation;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
 
-    Vector3 positionDepart;
-    Vector3 destination;
+    private Vector3 positionDepart;
+    private Vector3 destination;
 
-    Rigidbody rigidbody;
-    BoxCollider boxCollider;
+    private Rigidbody rigidbody;
+    private BoxCollider boxCollider;
 
-    bool marche = false;
+    private bool marche = false;
 
     // Start is called before the first frame update
     void Start()
