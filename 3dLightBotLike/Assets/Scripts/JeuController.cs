@@ -5,22 +5,26 @@ using UnityEngine;
 
 public class JeuController : MonoBehaviour
 {
-    public GameObject UIgameplay;
-    public GameObject personnage;
-    public Animator animateur;
+    [SerializeField]
+    private GameObject UIgameplay;
+    [SerializeField]
+    private GameObject personnage;
+    [SerializeField]
+    private Animator animateur;
 
-    public float hauteurSaut = 5f;
+    [SerializeField]
+    private float hauteurSaut = 5f;
 
-    public float uniteDeplacement = 1f;
+    [SerializeField]
+    private float uniteDeplacement = 1f;
 
     private float rotation;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
-    Vector3 destination;
-    Vector3 positionDepart;
+    private Vector3 destination;
+    private Vector3 positionDepart;
 
-    bool go = false;
-    bool mouvementEnCours = false;
+    private bool mouvementEnCours = false;
 
 
     private List<String> sequence = new List<string>();
@@ -43,19 +47,29 @@ public class JeuController : MonoBehaviour
     }
 
     public void LancerSequence(){
-        //go = true;
-        //printSequence();
-        //update();
-        for(int i=0; i<sequence.Count; i++ ){
+        printSequence();
+        
+        // for(int i=0; i<sequence.Count; i++ ){
 
-        }
+                        
+        //     if(sequence[i] == "Avance"){
+        //         if(i+1 < sequence.Count && sequence[i+1] == "Saut")
+        //             StartCoroutine (deplacement(saute()));
+        //         else
+        //             StartCoroutine (deplacement (null));
+        //     }
+                
+                
+            
+
+        // }
 
 
         foreach (String mouvement in sequence){
                 print("mouvement: " + mouvement);
 
                 if(mouvement == "Avance"){
-                    StartCoroutine (deplacement (saute()));
+                    StartCoroutine (deplacement (null));
                 } else if(mouvement == "Saut"){
                     StartCoroutine (saute ());
                 } else if(mouvement == "Gauche"){
@@ -71,6 +85,8 @@ public class JeuController : MonoBehaviour
             print("mouvement ajouté: " + mouvement);
         }
     }
+
+
 
     public IEnumerator deplacement (IEnumerator coroutineSuivante){
         print("init deplacement " + mouvementEnCours);
@@ -89,7 +105,8 @@ public class JeuController : MonoBehaviour
         animateur.SetBool("marche", false);
         mouvementEnCours = false;
         print("deplacement " + mouvementEnCours);
-        StartCoroutine(coroutineSuivante);
+        if(coroutineSuivante != null)
+            StartCoroutine(coroutineSuivante);
     }
 
     public IEnumerator saute (){

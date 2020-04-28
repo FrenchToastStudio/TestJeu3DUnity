@@ -263,7 +263,7 @@ RectTransform:
   m_Children:
   - {fileID: 1448196218}
   m_Father: {fileID: 373949235}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -545,7 +545,7 @@ RectTransform:
   m_Children:
   - {fileID: 1555066966}
   m_Father: {fileID: 373949235}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -935,10 +935,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1567419699}
-  - {fileID: 477518578}
   - {fileID: 104521048}
   - {fileID: 152847060}
   - {fileID: 684408216}
+  - {fileID: 477518578}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -979,7 +979,7 @@ RectTransform:
   m_Children:
   - {fileID: 1012141179}
   m_Father: {fileID: 373949235}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1031,6 +1031,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1575346249}
         m_MethodName: setMouvementAvance
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1999661238}
+        m_MethodName: addBtnAvance
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1205,7 +1216,7 @@ RectTransform:
   m_Children:
   - {fileID: 1492689741}
   m_Father: {fileID: 373949235}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1257,6 +1268,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1575346249}
         m_MethodName: setMouvementSaut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1999661238}
+        m_MethodName: addBtnSaut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2072,6 +2094,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1999661237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1999661239}
+  - component: {fileID: 1999661238}
+  m_Layer: 0
+  m_Name: ControleurUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1999661238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999661237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b1c8f5d9f7a7540b235912c6ca50b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIgameplay: {fileID: 373949231}
+  btnMouvementAvance: {fileID: 1217055154468280970, guid: 2d2fbdab5c0eaf21b8568dbb01669954,
+    type: 3}
+  btnMouvementSaut: {fileID: 6103895128837859031, guid: 0660083b3201ce082a27c08161c6e5b0,
+    type: 3}
+  btnMouvementGauche: {fileID: 5233492400443428655, guid: 3e6cbae948a974b2c834877a6d4a97e1,
+    type: 3}
+  btnMouvementDroit: {fileID: 7209771106183471063, guid: 93419bc75059795e195375d5eba1c455,
+    type: 3}
+--- !u!4 &1999661239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999661237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 415.89435, y: 573.41327, z: 54.681793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2144719837
 GameObject:
