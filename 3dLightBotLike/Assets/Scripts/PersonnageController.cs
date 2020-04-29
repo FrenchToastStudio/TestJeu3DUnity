@@ -36,8 +36,7 @@ public class PersonnageController : MonoBehaviour
     private BoxCollider boxCollider;
 
     private bool marche = false;
-    private bool enMouvement = false;
-
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -64,23 +63,24 @@ public class PersonnageController : MonoBehaviour
         }
             
         // Gestion du déplacement vers l'avant
-        if(Input.GetKeyDown(KeyCode.W) && enMouvement == false){
+        if(Input.GetKeyDown(KeyCode.W)){
 
             destination = transform.position + (transform.forward);
             marche = true;
             
-        }else if(Input.GetKeyDown(KeyCode.X) && enMouvement == false){
+        }else if(Input.GetKeyDown(KeyCode.X)){
             
             animateur.SetBool("saute", true);
             animateur.SetBool("estAuSol", false);
             rigidbody.AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
             rigidbody.AddForce(transform.forward * uniteDeplacementSaut, ForceMode.Impulse);            
             
-        }else if(Input.GetKeyDown(KeyCode.A) && enMouvement == false)
+        }else if(Input.GetKeyDown(KeyCode.A))
             rotation = rotationGauche;
-        else if(Input.GetKeyDown(KeyCode.D) && enMouvement == false)
+        else if(Input.GetKeyDown(KeyCode.D))
             rotation = rotationDroite;
 
+        // Actualisation des mouvements
         transform.Rotate(Vector3.up, rotation);
 
         if (marche){

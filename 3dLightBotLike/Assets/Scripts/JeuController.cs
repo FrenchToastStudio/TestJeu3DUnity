@@ -52,7 +52,7 @@ public class JeuController : MonoBehaviour
                 print("mouvement: " + mouvement);
 
                 if(mouvement == "Avance"){
-                    StartCoroutine (deplacement ());
+                    avance();
                 } else if(mouvement == "Saut"){
                     StartCoroutine (saute ());
                 } else if(mouvement == "Gauche"){
@@ -63,43 +63,28 @@ public class JeuController : MonoBehaviour
             }
     }
 
-    public IEnumerator deplacement (){
-       destination = positionDepart + (personnage.transform.forward * 1);
-        
+    public void avance(){
         animateur.SetBool("marche", true);
-        print("Start deplacement ");
-        while (personnage.transform.position.x != destination.x){
-            personnage.transform.position = Vector3.MoveTowards(personnage.transform.position, destination, 0.3f * Time.deltaTime); 
-            yield return new WaitForEndOfFrame ();
+        destination = personnage.transform.position + (transform.forward);
+        while (personnage.transform.position != destination){
+            personnage.transform.position = Vector3.Lerp(personnage.transform.position, destination, 1f);
+            print("in"); 
         }
-        
-        //animateur.SetBool("marche", false);
-        print("deplacement ");        
     }
 
     public IEnumerator saute (){
-        print("init saute ");
-        
-        print("Start saute ");
+
         animateur.SetBool("saute", true);
         animateur.SetBool("estAuSol", false);
         personnage.GetComponent<Rigidbody>().AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
         personnage.GetComponent<Rigidbody>().AddForce(personnage.transform.forward * uniteDeplacement, ForceMode.Impulse);
 
         yield return new WaitForEndOfFrame ();
-        print("saute ");
     }
 
     public IEnumerator tourne (float rotation){
-        print("init tourne ");
-        
-        print("Start tourne ");
         personnage.transform.Rotate(Vector3.up, rotation);
-
         yield return new WaitForEndOfFrame ();
-        positionDepart = personnage.transform.position;
-        print("tourne ");
-        Update();
     }
 
 
