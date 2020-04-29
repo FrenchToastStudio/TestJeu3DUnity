@@ -22,7 +22,7 @@ public class UiController : MonoBehaviour
 
 
     private Vector3 espacementEntreBtn = new Vector3(60, 0, 0);
-    private static Vector3 imagePosition = new Vector3(-400,323,0);
+    private static Vector3 imagePosition = new Vector3(-330,175,0);
 
 
     public void addBtnAvance(){

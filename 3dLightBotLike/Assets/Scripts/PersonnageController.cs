@@ -11,7 +11,7 @@ public class PersonnageController : MonoBehaviour
     [SerializeField]
     private float hauteurSaut = 4f;
     [SerializeField]
-    private float uniteDeplacementSaut = 1.50f;
+    private float uniteDeplacementSaut = 1.30f;
     [SerializeField]
     private Animator animateur;
 
@@ -20,6 +20,9 @@ public class PersonnageController : MonoBehaviour
 
     [SerializeField]
     private GameObject textPerdu;
+    
+    [SerializeField]
+    private GameObject textGagne;
     
     private float rotation;
     private float rotationGauche = -90.0f;
@@ -40,6 +43,8 @@ public class PersonnageController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
+
+        // Pour initialiser un restart
         positionDebutNiveau = transform.position;
 
     }
@@ -53,23 +58,24 @@ public class PersonnageController : MonoBehaviour
         if(rigidbody.velocity.y < 0)
             animateur.SetBool("saute", false);
 
-        if(positionDepart == destination){
+        if(positionDepart.z == destination.z || positionDepart.x == destination.x){
             animateur.SetBool("marche", false);
             marche = false;
         }
             
         // Gestion du déplacement vers l'avant
         if(Input.GetKeyDown(KeyCode.W) && enMouvement == false){
+
             destination = transform.position + (transform.forward);
             marche = true;
-            StartCoroutine(Attendre());
+            
         }else if(Input.GetKeyDown(KeyCode.X) && enMouvement == false){
             
             animateur.SetBool("saute", true);
             animateur.SetBool("estAuSol", false);
             rigidbody.AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
-            rigidbody.AddForce(transform.forward * uniteDeplacementSaut, ForceMode.VelocityChange);            
-            StartCoroutine(Attendre());
+            rigidbody.AddForce(transform.forward * uniteDeplacementSaut, ForceMode.Impulse);            
+            
         }else if(Input.GetKeyDown(KeyCode.A) && enMouvement == false)
             rotation = rotationGauche;
         else if(Input.GetKeyDown(KeyCode.D) && enMouvement == false)
@@ -89,19 +95,18 @@ public class PersonnageController : MonoBehaviour
     void OnCollisionEnter(Collision collision){
         animateur.SetBool("estAuSol", true);
         if(collision.gameObject.tag == "sol"){
-            print("perdu");
             Time.timeScale = 0;
-            GameObject message = Instantiate(textPerdu) as GameObject;
-            message.transform.SetParent(UIgameplay.transform, false);
-            message.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0,0,0);
-            message.GetComponent<RectTransform>().localScale = new Vector3(4,5,1);
-        }
-              
+            DisplayMessage(textPerdu);
+        } else if (collision.gameObject.tag == "fin"){
+            Time.timeScale = 0;
+            DisplayMessage(textGagne);
+        }     
     }
 
-    IEnumerator Attendre(){
-        enMouvement = true;
-        yield return new WaitForSeconds(2.0f);
-        enMouvement = false;
+    void DisplayMessage(GameObject unGameobject){
+        GameObject message = Instantiate(unGameobject) as GameObject;
+        message.transform.SetParent(UIgameplay.transform, false);
+        message.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0,0,0);
+        message.GetComponent<RectTransform>().localScale = new Vector3(4,5,1);
     }
 }
