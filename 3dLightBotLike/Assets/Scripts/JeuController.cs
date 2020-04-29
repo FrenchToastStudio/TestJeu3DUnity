@@ -31,7 +31,8 @@ public class JeuController : MonoBehaviour
     private List<IEnumerator> sequenceCoroutine = new List<IEnumerator>();
 
     public void setMouvementGauche(){
-        sequence.Add("Gauche"); 
+        sequence.Add("Gauche");
+        sequenceCoroutine.Add(tourne(rotationGauche)); 
     }
 
     public void setMouvementAvance(){
@@ -46,30 +47,17 @@ public class JeuController : MonoBehaviour
         sequence.Add("Saut");  
     }
 
+    void Update(){
+        positionDepart = personnage.transform.position;
+    }
+
     public void LancerSequence(){
-        printSequence();
-        
-        // for(int i=0; i<sequence.Count; i++ ){
-
-                        
-        //     if(sequence[i] == "Avance"){
-        //         if(i+1 < sequence.Count && sequence[i+1] == "Saut")
-        //             StartCoroutine (deplacement(saute()));
-        //         else
-        //             StartCoroutine (deplacement (null));
-        //     }
-                
-                
-            
-
-        // }
-
 
         foreach (String mouvement in sequence){
                 print("mouvement: " + mouvement);
 
                 if(mouvement == "Avance"){
-                    StartCoroutine (deplacement (null));
+                    StartCoroutine (deplacement ());
                 } else if(mouvement == "Saut"){
                     StartCoroutine (saute ());
                 } else if(mouvement == "Gauche"){
@@ -80,19 +68,11 @@ public class JeuController : MonoBehaviour
             }
     }
 
-    public void printSequence(){
-        foreach (String mouvement in sequence){
-            print("mouvement ajouté: " + mouvement);
-        }
-    }
-
-
-
-    public IEnumerator deplacement (IEnumerator coroutineSuivante){
+    public IEnumerator deplacement (){
         print("init deplacement " + mouvementEnCours);
-        positionDepart = personnage.transform.position;
         destination = positionDepart + (personnage.transform.forward * 1);
-        yield return new WaitUntil(()=>!mouvementEnCours);
+        new WaitWhile(()=>mouvementEnCours);
+        
 
         animateur.SetBool("marche", true);
         mouvementEnCours = true;
@@ -105,13 +85,13 @@ public class JeuController : MonoBehaviour
         animateur.SetBool("marche", false);
         mouvementEnCours = false;
         print("deplacement " + mouvementEnCours);
-        if(coroutineSuivante != null)
-            StartCoroutine(coroutineSuivante);
+        Update();
+        
     }
 
     public IEnumerator saute (){
         print("init saute " + mouvementEnCours);
-        yield return new WaitUntil(()=>!mouvementEnCours);
+        new WaitWhile(()=>mouvementEnCours);
 
         mouvementEnCours = true;
         print("Start saute " + mouvementEnCours);
@@ -123,7 +103,7 @@ public class JeuController : MonoBehaviour
         yield return new WaitForEndOfFrame ();
         mouvementEnCours = false;
         print("saute " + mouvementEnCours);
-
+        Update();
     }
 
     public IEnumerator tourne (float rotation){
@@ -138,6 +118,7 @@ public class JeuController : MonoBehaviour
         mouvementEnCours = false;
         positionDepart = personnage.transform.position;
         print("tourne " + mouvementEnCours);
+        Update();
     }
 
 
