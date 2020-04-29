@@ -24,15 +24,10 @@ public class JeuController : MonoBehaviour
     private Vector3 destination;
     private Vector3 positionDepart;
 
-    private bool mouvementEnCours = false;
-
-
     private List<String> sequence = new List<string>();
-    private List<IEnumerator> sequenceCoroutine = new List<IEnumerator>();
 
     public void setMouvementGauche(){
         sequence.Add("Gauche");
-        sequenceCoroutine.Add(tourne(rotationGauche)); 
     }
 
     public void setMouvementAvance(){
@@ -69,55 +64,41 @@ public class JeuController : MonoBehaviour
     }
 
     public IEnumerator deplacement (){
-        print("init deplacement " + mouvementEnCours);
-        destination = positionDepart + (personnage.transform.forward * 1);
-        new WaitWhile(()=>mouvementEnCours);
+       destination = positionDepart + (personnage.transform.forward * 1);
         
-
         animateur.SetBool("marche", true);
-        mouvementEnCours = true;
-        print("Start deplacement " + mouvementEnCours);
-        while (personnage.transform.position != destination){
+        print("Start deplacement ");
+        while (personnage.transform.position.x != destination.x){
             personnage.transform.position = Vector3.MoveTowards(personnage.transform.position, destination, 0.3f * Time.deltaTime); 
             yield return new WaitForEndOfFrame ();
         }
         
-        animateur.SetBool("marche", false);
-        mouvementEnCours = false;
-        print("deplacement " + mouvementEnCours);
-        Update();
-        
+        //animateur.SetBool("marche", false);
+        print("deplacement ");        
     }
 
     public IEnumerator saute (){
-        print("init saute " + mouvementEnCours);
-        new WaitWhile(()=>mouvementEnCours);
-
-        mouvementEnCours = true;
-        print("Start saute " + mouvementEnCours);
+        print("init saute ");
+        
+        print("Start saute ");
         animateur.SetBool("saute", true);
         animateur.SetBool("estAuSol", false);
         personnage.GetComponent<Rigidbody>().AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
         personnage.GetComponent<Rigidbody>().AddForce(personnage.transform.forward * uniteDeplacement, ForceMode.Impulse);
 
         yield return new WaitForEndOfFrame ();
-        mouvementEnCours = false;
-        print("saute " + mouvementEnCours);
-        Update();
+        print("saute ");
     }
 
     public IEnumerator tourne (float rotation){
-        print("init tourne " + mouvementEnCours);
-        yield return new WaitUntil(()=>!mouvementEnCours);
+        print("init tourne ");
         
-        mouvementEnCours = true;
-        print("Start tourne " + mouvementEnCours);
+        print("Start tourne ");
         personnage.transform.Rotate(Vector3.up, rotation);
 
         yield return new WaitForEndOfFrame ();
-        mouvementEnCours = false;
         positionDepart = personnage.transform.position;
-        print("tourne " + mouvementEnCours);
+        print("tourne ");
         Update();
     }
 
