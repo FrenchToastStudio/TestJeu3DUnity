@@ -49,18 +49,18 @@ public class JeuController : MonoBehaviour
     public void LancerSequence(){
 
         foreach (String mouvement in sequence){
-                print("mouvement: " + mouvement);
+            print("mouvement: " + mouvement);
 
-                if(mouvement == "Avance"){
-                    avance();
-                } else if(mouvement == "Saut"){
-                    StartCoroutine (saute ());
-                } else if(mouvement == "Gauche"){
-                    StartCoroutine (tourne (rotationGauche));
-                } else if(mouvement == "Droite"){
-                    StartCoroutine (tourne (rotationDroite));
-                }
+            if(mouvement == "Avance"){
+                avance();
+            } else if(mouvement == "Saut"){
+                StartCoroutine (saute ());
+            } else if(mouvement == "Gauche"){
+                StartCoroutine (tourne (rotationGauche));
+            } else if(mouvement == "Droite"){
+                StartCoroutine (tourne (rotationDroite));
             }
+        }
     }
 
     public void avance(){
