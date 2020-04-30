@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6507202950733764048}
   m_Layer: 5
   m_Name: MouvementAvance
-  m_TagString: Untagged
+  m_TagString: btnSequence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2168632660633708941}
   m_Layer: 5
   m_Name: MouvementSaut
-  m_TagString: Untagged
+  m_TagString: btnSequence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
