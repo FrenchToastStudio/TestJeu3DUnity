@@ -51,57 +51,57 @@ public class PersonnageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotation = 0;
-        positionDepart = transform.position;
+        // rotation = 0;
+        // positionDepart = transform.position;
 
-        if(rigidbody.velocity.y < 0)
-            animateur.SetBool("saute", false);
+        // if(rigidbody.velocity.y < 0)
+        //     animateur.SetBool("saute", false);
 
-        if(positionDepart.z == destination.z || positionDepart.x == destination.x){
-            animateur.SetBool("marche", false);
-            marche = false;
-        }
+        // if(positionDepart.z == destination.z || positionDepart.x == destination.x){
+        //     animateur.SetBool("marche", false);
+        //     marche = false;
+        // }
             
         // Gestion du déplacement vers l'avant
-        if(Input.GetKeyDown(KeyCode.W)){
+        // if(Input.GetKeyDown(KeyCode.W)){
 
-            destination = transform.position + (transform.forward);
-            marche = true;
+        //     destination = transform.position + (transform.forward);
+        //     marche = true;
             
-        }else if(Input.GetKeyDown(KeyCode.X)){
+        // }else if(Input.GetKeyDown(KeyCode.X)){
             
-            animateur.SetBool("saute", true);
-            animateur.SetBool("estAuSol", false);
-            rigidbody.AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
-            rigidbody.AddForce(transform.forward * uniteDeplacementSaut, ForceMode.Impulse);            
+        //     animateur.SetBool("saute", true);
+        //     animateur.SetBool("estAuSol", false);
+        //     rigidbody.AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
+        //     rigidbody.AddForce(transform.forward * uniteDeplacementSaut, ForceMode.Impulse);            
             
-        }else if(Input.GetKeyDown(KeyCode.A))
-            rotation = rotationGauche;
-        else if(Input.GetKeyDown(KeyCode.D))
-            rotation = rotationDroite;
+        // }else if(Input.GetKeyDown(KeyCode.A))
+        //     rotation = rotationGauche;
+        // else if(Input.GetKeyDown(KeyCode.D))
+        //     rotation = rotationDroite;
 
-        // Actualisation des mouvements
-        transform.Rotate(Vector3.up, rotation);
+        // // Actualisation des mouvements
+        // transform.Rotate(Vector3.up, rotation);
 
-        if (marche){
-            animateur.SetBool("marche", true);
-            transform.position = Vector3.MoveTowards(transform.position, destination, 0.5f * Time.deltaTime);
-        } else {
-            animateur.SetBool("marche", false);
-        }        
+        // if (marche){
+        //     animateur.SetBool("marche", true);
+        //     transform.position = Vector3.MoveTowards(transform.position, destination, 0.5f * Time.deltaTime);
+        // } else {
+        //     animateur.SetBool("marche", false);
+        // }        
 
     }
 
-    void OnCollisionEnter(Collision collision){
-        animateur.SetBool("estAuSol", true);
-        if(collision.gameObject.tag == "sol"){
-            Time.timeScale = 0;
-            DisplayMessage(textPerdu);
-        } else if (collision.gameObject.tag == "fin"){
-            Time.timeScale = 0;
-            DisplayMessage(textGagne);
-        }     
-    }
+    // void OnCollisionEnter(Collision collision){
+    //     animateur.SetBool("estAuSol", true);
+    //     if(collision.gameObject.tag == "sol"){
+    //         Time.timeScale = 0;
+    //         DisplayMessage(textPerdu);
+    //     } else if (collision.gameObject.tag == "fin"){
+    //         Time.timeScale = 0;
+    //         DisplayMessage(textGagne);
+    //     }     
+    // }
 
     void DisplayMessage(GameObject unGameobject){
         GameObject message = Instantiate(unGameobject) as GameObject;
