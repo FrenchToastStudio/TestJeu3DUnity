@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 2598857853898295184}
   m_Layer: 0
   m_Name: Personnage
-  m_TagString: Untagged
+  m_TagString: personnagePrincipale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -477,6 +477,7 @@ MonoBehaviour:
   UIgameplay: {fileID: 0}
   textPerdu: {fileID: 6142495949440293281, guid: 825061afcd5f40b578fb2239291bea9b,
     type: 3}
+  textGagne: {fileID: 0}
 --- !u!1 &2599179678805632571
 GameObject:
   m_ObjectHideFlags: 0

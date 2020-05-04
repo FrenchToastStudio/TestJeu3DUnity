@@ -8,6 +8,8 @@ TagManager:
   - plancher
   - casePacour
   - fin
+  - btnSequence
+  - personnagePrincipale
   layers:
   - Default
   - TransparentFX
