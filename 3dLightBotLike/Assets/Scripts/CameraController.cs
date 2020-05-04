@@ -13,5 +13,6 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         transform.position = personnage.transform.position + offset;
+
     }
 }
