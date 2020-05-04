@@ -61,8 +61,6 @@ public class PersonnageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        positionDepart = transform.position;
-
         if(rigidbody.velocity.y < 0){
             animateur.SetBool("saute", false);
         }
