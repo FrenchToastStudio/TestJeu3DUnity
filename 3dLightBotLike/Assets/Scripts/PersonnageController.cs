@@ -6,25 +6,17 @@ using UnityEngine;
 public class PersonnageController : MonoBehaviour
 {
     
-    [SerializeField]
-    private float uniteDeplacement = 1f;
-    [SerializeField]
-    private float hauteurSaut = 4.5f;
-    [SerializeField]
-    private float uniteDeplacementSaut = 1.30f;
-    [SerializeField]
-    private Animator animateur;
+    [SerializeField] private float uniteDeplacement = 1f;
+    [SerializeField] private float hauteurSaut = 4.5f;
+    [SerializeField] private float uniteDeplacementSaut = 1.30f;
+    [SerializeField] private Animator animateur;
 
-    [SerializeField]
-    private GameObject UIgameplay;
+    [SerializeField] private GameObject UIgameplay;
 
-    [SerializeField]
-    private GameObject textPerdu;
+    [SerializeField] private GameObject textPerdu;
     
-    [SerializeField]
-    private GameObject textGagne;
+    [SerializeField] private GameObject textGagne;
     
-    private float rotation;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
 
@@ -63,8 +55,6 @@ public class PersonnageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        positionDepart = transform.position;
-
         if(rigidbody.velocity.y < 0){
             animateur.SetBool("saute", false);
         }
