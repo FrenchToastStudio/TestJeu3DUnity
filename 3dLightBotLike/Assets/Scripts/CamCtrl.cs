@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,13 +14,13 @@ public class CamCtrl : MonoBehaviour
     {
         transform.eulerAngles = personnage.transform.eulerAngles + offsetAngle;
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-        
+
         transform.position = personnage.transform.position + offset;
-        
+
 
     }
 }

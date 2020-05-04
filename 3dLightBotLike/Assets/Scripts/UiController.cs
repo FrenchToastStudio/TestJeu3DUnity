@@ -65,7 +65,7 @@ public class UiController : MonoBehaviour
         uiToggle.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
     }
 
-    
+
 
 
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PersonnageController : MonoBehaviour
 {
-    
+
     [SerializeField]
     private float uniteDeplacement = 1f;
     [SerializeField]
@@ -20,10 +20,7 @@ public class PersonnageController : MonoBehaviour
 
     [SerializeField]
     private GameObject textPerdu;
-    
-    [SerializeField]
-    private GameObject textGagne;
-    
+
     private float rotation;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
@@ -39,6 +36,7 @@ public class PersonnageController : MonoBehaviour
     bool go = false;
     bool marche = false;
     bool saute = false;
+    bool peutLancerSéquence = true;
 
     private List<String> sequence = new List<string>();
 
@@ -46,8 +44,8 @@ public class PersonnageController : MonoBehaviour
 
     private GameObject[] listBtnSequence;
 
-    
- 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +66,7 @@ public class PersonnageController : MonoBehaviour
         if(rigidbody.velocity.y < 0){
             animateur.SetBool("saute", false);
         }
-            
+
 
         if(transform.position.z == destination.z && transform.position.x == destination.x){
             Debug.Log("arrive");
@@ -105,27 +103,27 @@ public class PersonnageController : MonoBehaviour
             sequence.RemoveAt(0);
         }
 
-           
+
         //Gestion du déplacement vers l'avant
         if(Input.GetKeyDown(KeyCode.W)){
             destination = transform.position + (transform.forward);
             marche = true;
         }else if(Input.GetKeyDown(KeyCode.X)){
-            
+
             animateur.SetBool("saute", true);
             animateur.SetBool("estAuSol", false);
             rigidbody.AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
-            rigidbody.AddForce(transform.forward * uniteDeplacementSaut, ForceMode.Impulse);            
-            
+            rigidbody.AddForce(transform.forward * uniteDeplacementSaut, ForceMode.Impulse);
+
         }else if(Input.GetKeyDown(KeyCode.A))
             transform.Rotate(Vector3.up, rotationGauche);
         else if(Input.GetKeyDown(KeyCode.D))
             transform.Rotate(Vector3.up, rotationDroite);
-        
+
         if (marche){
             animateur.SetBool("marche", true);
             transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
-        }       
+        }
 
     }
 
@@ -140,10 +138,7 @@ public class PersonnageController : MonoBehaviour
         if(collision.gameObject.tag == "sol"){
             Time.timeScale = 0;
             DisplayMessage(textPerdu);
-        } else if (collision.gameObject.tag == "fin"){
-            Time.timeScale = 0;
-            DisplayMessage(textGagne);
-        }     
+        }
     }
 
     void DisplayMessage(GameObject unGameobject){
@@ -158,10 +153,12 @@ public class PersonnageController : MonoBehaviour
     }
 
     public void LancerSequence(){
-        if(sequence.Count == 0 && historiqueSequence.Count > 0)
-            sequence = copyList(historiqueSequence);
-        historiqueSequence = copyList(sequence);
-        go =true;
+        if(peutLancerSéquence){
+            if(sequence.Count == 0 && historiqueSequence.Count > 0)
+                sequence = copyList(historiqueSequence);
+            historiqueSequence = copyList(sequence);
+            go =true;
+        }
     }
 
     public void recommencerNiveau(){
@@ -178,15 +175,15 @@ public class PersonnageController : MonoBehaviour
     }
 
     public void setMouvementAvance(){
-        sequence.Add("Avance");         
+        sequence.Add("Avance");
     }
 
     public void setMouvementDroite(){
-        sequence.Add("Droite");  
+        sequence.Add("Droite");
     }
 
     public void setMouvementSaut(){
-        sequence.Add("Saut");  
+        sequence.Add("Saut");
     }
 
     public void saut(){
