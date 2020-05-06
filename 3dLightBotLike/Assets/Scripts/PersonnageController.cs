@@ -6,8 +6,7 @@ using UnityEngine;
 public class PersonnageController : MonoBehaviour
 {
 
-    [SerializeField]
-    private float uniteDeplacement = 1f;
+    [SerializeField] private float uniteDeplacement = 1f;
     [SerializeField]
     private float hauteurSaut = 4.5f;
     [SerializeField]
@@ -33,16 +32,13 @@ public class PersonnageController : MonoBehaviour
     private BoxCollider boxCollider;
 
     bool enMouvement = false;
-    bool go = false;
+    private static bool go = false;
     bool marche = false;
     bool saute = false;
-    bool peutLancerSéquence = true;
+    private static bool restart = false;
 
-    private List<String> sequence = new List<string>();
+    private static List<String> sequence = new List<string>();
 
-    private List<String> historiqueSequence;
-
-    private GameObject[] listBtnSequence;
 
 
 
@@ -58,17 +54,19 @@ public class PersonnageController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if(restart == true){
+            transform.position = positionDebutNiveau;
+            restart = false;
+        }
+
         if(rigidbody.velocity.y < 0){
             animateur.SetBool("saute", false);
         }
 
 
         if(transform.position.z == destination.z && transform.position.x == destination.x){
-            Debug.Log("arrive");
-            Debug.Log(transform.position.z + " " + destination.z);
             animateur.SetBool("marche", false);
             marche = false;
             enMouvement = false;
@@ -107,7 +105,6 @@ public class PersonnageController : MonoBehaviour
             destination = transform.position + (transform.forward);
             marche = true;
         }else if(Input.GetKeyDown(KeyCode.X)){
-
             animateur.SetBool("saute", true);
             animateur.SetBool("estAuSol", false);
             rigidbody.AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
@@ -131,7 +128,6 @@ public class PersonnageController : MonoBehaviour
         if(saute){
             enMouvement = false;
             saute = false;
-            Debug.Log("est au sol - mouvement false");
         }
         if(collision.gameObject.tag == "sol"){
             Time.timeScale = 0;
@@ -150,56 +146,24 @@ public class PersonnageController : MonoBehaviour
         positionDepart = transform.position;
     }
 
-    public void LancerSequence(){
-        if(peutLancerSéquence){
-            if(sequence.Count == 0 && historiqueSequence.Count > 0)
-                sequence = copyList(historiqueSequence);
-            historiqueSequence = copyList(sequence);
-            go =true;
-        }
+    public static void SetSequence (List<String> sequenceMouvement){
+        sequence = sequenceMouvement;
+        go =true;
     }
 
-    public void recommencerNiveau(){
-        transform.position = positionDebutNiveau;
-        sequence = historiqueSequence = new List<string>();
-        listBtnSequence = GameObject.FindGameObjectsWithTag("btnSequence");
-        foreach(GameObject unBtn in listBtnSequence){
-            Destroy(unBtn);
-        }
+    public static void Restart(){
+        restart = true;
     }
 
-    public void setMouvementGauche(){
-        sequence.Add("Gauche");
-    }
-
-    public void setMouvementAvance(){
-        sequence.Add("Avance");
-    }
-
-    public void setMouvementDroite(){
-        sequence.Add("Droite");
-    }
-
-    public void setMouvementSaut(){
-        sequence.Add("Saut");
-    }
-
-    public void saut(){
+    private void saut(){
         animateur.SetBool("saute", true);
         animateur.SetBool("estAuSol", false);
         GetComponent<Rigidbody>().AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
         GetComponent<Rigidbody>().AddForce(transform.forward * uniteDeplacement, ForceMode.Impulse);
     }
 
-    public void tourne (float rotation){
+    private void tourne (float rotation){
         transform.Rotate(Vector3.up, rotation);
     }
 
-    private List<String> copyList (List<String> listeOriginale){
-        List<String> listeDestination = new List<string>();
-        foreach(String valeur in listeOriginale){
-            listeDestination.Add(valeur);
-        }
-        return listeDestination;
-    }
 }
