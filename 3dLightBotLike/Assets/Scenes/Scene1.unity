@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6486054974305702807}
+      - m_Target: {fileID: 1999661238}
         m_MethodName: LancerSequence
         m_Mode: 1
         m_Arguments:
@@ -1599,8 +1599,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6486054974305702807}
-        m_MethodName: recommencerNiveau
+      - m_Target: {fileID: 1999661238}
+        m_MethodName: restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5345,6 +5345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIgameplay: {fileID: 373949231}
+  layout: {fileID: 116256737}
   btnMouvementAvance: {fileID: 1217055154468280970, guid: 2d2fbdab5c0eaf21b8568dbb01669954,
     type: 3}
   btnMouvementSaut: {fileID: 6103895128837859031, guid: 0660083b3201ce082a27c08161c6e5b0,
@@ -5353,8 +5354,12 @@ MonoBehaviour:
     type: 3}
   btnMouvementDroit: {fileID: 7209771106183471063, guid: 93419bc75059795e195375d5eba1c455,
     type: 3}
+  btnMouvementGo: {fileID: 152847059}
+  btnRestart: {fileID: 217245393}
   spriteAvance: {fileID: 21300000, guid: 35441921b747d6283a4269ab09ba1f9f, type: 3}
-  layout: {fileID: 116256737}
+  spriteGauche: {fileID: 21300000, guid: 86784204fd675d1b9800fe2378742b24, type: 3}
+  spriteDroite: {fileID: 21300000, guid: d32d475ac58344b85a22e6f4d8497b4b, type: 3}
+  spriteSaute: {fileID: 21300000, guid: c166f0666cef72338ad6271f23c13a43, type: 3}
 --- !u!4 &1999661239
 Transform:
   m_ObjectHideFlags: 0
