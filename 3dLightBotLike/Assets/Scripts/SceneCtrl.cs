@@ -8,8 +8,6 @@ using UnityEngine.SceneManagement;
 public class SceneCtrl : MonoBehaviour
 {
 
-    [SerializeField] Button loadSceneBtn;
-
     public void chargerScene(string sceneName) {
         SceneManager.LoadSceneAsync(sceneName);
     }
