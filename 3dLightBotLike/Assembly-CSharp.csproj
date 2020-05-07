@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\PersonnageController.cs" />
      <Compile Include="Assets\Scripts\SceneCtrl.cs" />
      <Compile Include="Assets\Scripts\UiController.cs" />
+     <Compile Include="Assets\Scripts\btnCtrl.cs" />
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\CameraLogic.cs" />
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\Demo.cs" />
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\SimpleCharacterControl.cs" />

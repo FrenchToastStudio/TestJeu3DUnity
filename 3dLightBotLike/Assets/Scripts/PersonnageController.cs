@@ -7,24 +7,21 @@ public class PersonnageController : MonoBehaviour
 {
 
     [SerializeField] private float uniteDeplacement = 1f;
-    [SerializeField]
-    private float hauteurSaut = 4.5f;
-    [SerializeField]
-    private float uniteDeplacementSaut = 1.30f;
-    [SerializeField]
-    private Animator animateur;
+    [SerializeField] private float hauteurSaut = 4.5f;
+    [SerializeField] private float uniteDeplacementSaut = 1.30f;
+    [SerializeField] private Animator animateur;
 
-    [SerializeField]
-    private GameObject UIgameplay;
+    [SerializeField] private GameObject UIgameplay;
+    [SerializeField] private GameObject textPerdu;
 
-    [SerializeField]
-    private GameObject textPerdu;
+    [SerializeField] private SceneCtrl sceneCtrl;
 
     private float rotation;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
 
     private Vector3 positionDebutNiveau;
+    private float positionDebutNiveauRotation;
     private Vector3 positionDepart;
     private Vector3 destination;
 
@@ -47,9 +44,9 @@ public class PersonnageController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
-
         // Pour initialiser un restart
         positionDebutNiveau = transform.position;
+        positionDebutNiveauRotation = transform.rotation.eulerAngles.y;
         destination = transform.position + (transform.forward);
 
     }
@@ -58,6 +55,7 @@ public class PersonnageController : MonoBehaviour
     {
         if(restart == true){
             transform.position = positionDebutNiveau;
+            transform.rotation = Quaternion.Euler(0, positionDebutNiveauRotation, 0);
             restart = false;
         }
 
@@ -123,23 +121,14 @@ public class PersonnageController : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision){
-        Debug.Log(saute);
         animateur.SetBool("estAuSol", true);
         if(saute){
             enMouvement = false;
             saute = false;
         }
         if(collision.gameObject.tag == "sol"){
-            Time.timeScale = 0;
-            DisplayMessage(textPerdu);
+            sceneCtrl.perdu();
         }
-    }
-
-    void DisplayMessage(GameObject unGameobject){
-        GameObject message = Instantiate(unGameobject) as GameObject;
-        message.transform.SetParent(UIgameplay.transform, false);
-        message.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0,0,0);
-        message.GetComponent<RectTransform>().localScale = new Vector3(4,5,1);
     }
 
     public void getPositionPersonnage(){

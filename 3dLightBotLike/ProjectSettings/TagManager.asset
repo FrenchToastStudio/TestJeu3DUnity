@@ -9,6 +9,7 @@ TagManager:
   - casePacour
   - fin
   - btnSequence
+  - UIgameplay
   layers:
   - Default
   - TransparentFX
