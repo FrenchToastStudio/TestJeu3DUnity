@@ -23,7 +23,7 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
     void Update() {
 
-        if(enMouvement && !enSaut) {
+        if(enMouvement && !enSaut && !enMarche) {
             enMouvement= false;
             enMarche = false;
         }
@@ -36,7 +36,6 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
         if(collision.gameObject.tag == "sol") {
             if (enMarche) {
-                enMarche = false;
                 this.transform.position = positionDepart;
                 sauter();
             } else {
