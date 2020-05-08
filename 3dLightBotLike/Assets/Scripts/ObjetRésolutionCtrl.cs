@@ -22,6 +22,12 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     private float uniteDeplacementSaut;
 
     void Update() {
+        if(transform.position = destination)
+            enMarche = false;
+
+        if (enMarche) {
+            destination = transform.position + (transform.forward);
+        }
 
         if(enMouvement && !enSaut) {
             enMouvement= false;
@@ -36,8 +42,8 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
         if(collision.gameObject.tag == "sol") {
             if (enMarche) {
-                this.transform.position = positionDepart;
                 enMarche = false;
+                this.transform.position = positionDepart;
                 sauter();
             } else {
                 Destroy(this.gameObject);
@@ -46,6 +52,29 @@ public class ObjetRésolutionCtrl : MonoBehaviour
         if(collision.gameObject.tag == "fin") { 
             compléterNiveau = true;
         }
+    }
+
+    private void OnTriggerEnter(Collision collision){
+        if(enSaut) {
+            enSaut = false;
+        }
+
+        if(collision.gameObject.tag == "sol") {
+            if (enMarche) {
+                enMarche = false;
+                this.transform.position = positionDepart;
+                sauter();
+            } else {
+                Destroy(this.gameObject);
+            }
+        }
+        if(collision.gameObject.tag == "fin") { 
+            compléterNiveau = true;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision){
+        Destroy(this.gameObject);
     }
 
     public bool getCompléterNiveau() {
@@ -65,7 +94,7 @@ public class ObjetRésolutionCtrl : MonoBehaviour
         enMarche = true;
         positionDepart = this.transform.position;
         destination = transform.position + (transform.forward);
-        this.transform.position = destination;
+        transform.position = destination;
     }
 
     public void tournerGauche() { 
