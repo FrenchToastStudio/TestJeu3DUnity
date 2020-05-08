@@ -20,18 +20,18 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     private float uniteDeplacementSaut;
 
     void Update() {
-
-    }
-
-    void LateUpdate() {
-        enMouvement = false;
-        enMarche = false;
+        if(enMouvement) {
+            enMouvement= false;
+            enMarche = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision){
         if(collision.gameObject.tag == "sol") {
+            Debug.Log("touche le sol");
             if (enMarche) {
                 this.transform.position = positionDepart;
+                enMarche = false;
                 sauter();
             } else {
                 Destroy(this);
@@ -59,8 +59,7 @@ public class ObjetRésolutionCtrl : MonoBehaviour
         enMarche = true;
         positionDepart = this.transform.position;
         destination = transform.position + (transform.forward);
-        }
-
+        this.transform.position = destination;
     }
 
     public void tournerGauche() { 
@@ -75,10 +74,19 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
     public void sauter() {
         enMarche = false;
-        destination = transform.position + (transform.forward);
-        destination = new Vector3(destination.x, this.transform.position.y + hauteurSaut, destination.z);
-        this.transform.position = destination;
-        enMouvement = false;
+        GetComponent<Rigidbody>().AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(transform.forward * uniteDeplacement, ForceMode.Impulse);
+
+    }
+
+    public void sauterGauche() {
+        tourne(rotationGauche);
+        sauter();
+    }
+
+    public void sauterDroite() {
+        tourne(rotationDroite);
+        sauter();
     }
 
     public void tourne (float rotation){
