@@ -23,6 +23,8 @@ public class RésolutionCtrl : MonoBehaviour
         listeRésolutions = new List<GameObject>();
         listeRésolutions.Add(résolution);
 
+        personnage.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -33,17 +35,22 @@ public class RésolutionCtrl : MonoBehaviour
                 if(uneRésolution == null){
                     listeRésolutions.Remove(uneRésolution);
                 } else {
-                    if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getCompléterNiveau()) {
-                        if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup() < coupMinimum){
-                            coupMinimum = uneRésolution.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup();
+                    if(!uneRésolution.GetComponent<ObjetRésolutionCtrl>().getEnMouvement()) {
+                        if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getCompléterNiveau()) {
+                            if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup() < coupMinimum){
+                                coupMinimum = uneRésolution.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup();
+                                Destroy(uneRésolution);
+                                Debug.Log("Réeussi");
+                            }
+                        } else {
+                            cloner(uneRésolution);
                             Destroy(uneRésolution);
                         }
-                    } else {
-                        cloner(uneRésolution);
-                        Destroy(uneRésolution);
                     }
                 }
             }
+        } else {
+            personnage.SetActive(true);
         }
     }
 
@@ -52,43 +59,24 @@ public class RésolutionCtrl : MonoBehaviour
         GameObject clone1 = Instantiate(unObjetACloner) as GameObject;
         clone1.SetActive(true);
         clone1.GetComponent<ObjetRésolutionCtrl>().avancer();
-        clone1.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
         if(clone1 != null)
             listeRésolutions.Add(clone1);
+            clone1.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
 
-        GameObject clone2 = Instantiate(unObjetACloner) as GameObject;
-        clone2.SetActive(true);
-        clone2.GetComponent<ObjetRésolutionCtrl>().tournerGauche();
-        clone2.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-        if(clone2 != null)
-            listeRésolutions.Add(clone2);
+        // GameObject clone2 = Instantiate(unObjetACloner) as GameObject;
+        // clone2.SetActive(true);
+        // clone2.GetComponent<ObjetRésolutionCtrl>().tournerGauche();
+        // if(clone2 != null)
+        //     listeRésolutions.Add(clone2);
+        //     clone2.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
+        //
+        // GameObject clone3 = Instantiate(unObjetACloner) as GameObject;
+        // clone3.SetActive(true);
+        // clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
+        // clone3.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
+        // if(clone3 != null)
+        //     listeRésolutions.Add(clone3);
+        //
 
-        GameObject clone3 = Instantiate(unObjetACloner) as GameObject;
-        clone3.SetActive(true);
-        clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
-        clone3.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-        if(clone3 != null)
-            listeRésolutions.Add(clone3);
-
-        GameObject clone4 = Instantiate(unObjetACloner) as GameObject;
-        clone4.SetActive(true);
-        clone4.GetComponent<ObjetRésolutionCtrl>().sauter();
-        clone4.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-        if(clone4 != null)
-            listeRésolutions.Add(clone4);
-
-        GameObject clone5 = Instantiate(unObjetACloner) as GameObject;
-        clone5.SetActive(true);
-        clone5.GetComponent<ObjetRésolutionCtrl>().sauterGauche();
-        clone5.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-        if(clone5 != null)
-            listeRésolutions.Add(clone5);
-
-        GameObject clone6 = Instantiate(unObjetACloner) as GameObject;
-        clone6.SetActive(true);
-        clone6.GetComponent<ObjetRésolutionCtrl>().sauterDroite();
-        clone6.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-        if(clone6 != null)
-            listeRésolutions.Add(clone6);
     }
 }

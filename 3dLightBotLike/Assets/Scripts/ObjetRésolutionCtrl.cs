@@ -8,17 +8,28 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     private int nombreDeCoup = 0;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
-    private Vector3 destination;
 
+    private Vector3 destination;
+    private Vector3 positionDepart;
+
+    private bool enMarche;
+    private bool enMouvement = false;
     private float uniteDeplacement;
     private float hauteurSaut;
     private float uniteDeplacementSaut;
 
+    void Update() {
+
+    }
 
     private void OnCollisionEnter(Collision collision){
-
         if(collision.gameObject.tag == "sol") {
-            Destroy(this);
+            if (enMarche) {
+                enMarche = false;
+                avancer();
+            } else {
+                Destroy(this);
+            }
         }
         if(collision.gameObject.tag == "fin") { 
             compléterNiveau = true;
@@ -38,8 +49,19 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     }
 
     public void avancer() {
+        enMouvement = true;
+        enMarche = true;
+        positionDepart = this.transform.position;
         destination = transform.position + (transform.forward);
         this.transform.position = destination;
+        if(!enMarche){
+            this.transform.position = positionDepart;
+            sauter();
+        } else {
+            enMarche = false;
+            enMouvement = false;
+        }
+
     }
 
     public void tournerGauche() { 
@@ -56,6 +78,7 @@ public class ObjetRésolutionCtrl : MonoBehaviour
         destination = transform.position + (transform.forward);
         destination = new Vector3(destination.x, this.transform.position.y + hauteurSaut, destination.z);
         this.transform.position = destination;
+        enMouvement = false;
     }
 
     public void sauterGauche() {
@@ -83,6 +106,10 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
     public void setUniteDeplacementSaut(float unFloat) {
         uniteDeplacementSaut = unFloat;
+    }
+
+    public bool getEnMouvement() {
+        return enMouvement;
     }
 
 }
