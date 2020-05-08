@@ -6,13 +6,10 @@ using UnityEngine.EventSystems;
 
 public class btnCtrl : MonoBehaviour, IPointerClickHandler
 {
-
     public void OnPointerClick(PointerEventData e){
 
         UiController.ActionToDelete(Int32.Parse(name));
 
     }
     
-
-
 }
