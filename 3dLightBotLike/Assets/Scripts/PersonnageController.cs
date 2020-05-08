@@ -7,11 +7,11 @@ public class PersonnageController : MonoBehaviour
 {
 
     [SerializeField]
-    private float uniteDeplacement = 1f;
+    private float uniteDeplacement;
     [SerializeField]
-    private float hauteurSaut = 4.5f;
+    private float hauteurSaut;
     [SerializeField]
-    private float uniteDeplacementSaut = 1.30f;
+    private float uniteDeplacementSaut;
     [SerializeField]
     private Animator animateur;
 

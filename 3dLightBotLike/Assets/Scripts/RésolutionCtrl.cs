@@ -73,6 +73,8 @@ public class RésolutionCtrl : MonoBehaviour
         clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
         listeRésolutions.Add(clone3);
 
+        Destroy(unObjetACloner);
+
         // GameObject clone2 = Instantiate(unObjetACloner) as GameObject;
         // clone2.SetActive(true);
         // clone2.GetComponent<ObjetRésolutionCtrl>().tournerGauche();

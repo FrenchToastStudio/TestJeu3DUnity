@@ -41,15 +41,16 @@ public class ObjetRésolutionCtrl : MonoBehaviour
         if (enMarche){
             transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
         }
+        
+        if (peutSauter && !enSaut){
+            peutSauter = false;
+            sauter();
+        }
 
     }
 
     void LateUpdate() {
 
-        if (peutSauter && !enSaut){
-            peutSauter = false;
-            sauter();
-       }
 
     }
 
@@ -59,9 +60,9 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
         if(collision.gameObject.tag == "sol") {
             if(enMarche) {
-                this.transform.position = positionDepart;
                 enMarche = false;
                 peutSauter = true;
+                this.transform.position = positionDepart;
             } else {
                 Debug.Log("Toucé");
                 Destroy(this.gameObject);
