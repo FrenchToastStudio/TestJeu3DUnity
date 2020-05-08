@@ -63,20 +63,20 @@ public class RésolutionCtrl : MonoBehaviour
             listeRésolutions.Add(clone1);
             clone1.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
 
-        // GameObject clone2 = Instantiate(unObjetACloner) as GameObject;
-        // clone2.SetActive(true);
-        // clone2.GetComponent<ObjetRésolutionCtrl>().tournerGauche();
-        // if(clone2 != null)
-        //     listeRésolutions.Add(clone2);
-        //     clone2.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-        //
-        // GameObject clone3 = Instantiate(unObjetACloner) as GameObject;
-        // clone3.SetActive(true);
-        // clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
-        // clone3.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-        // if(clone3 != null)
-        //     listeRésolutions.Add(clone3);
-        //
+        GameObject clone2 = Instantiate(unObjetACloner) as GameObject;
+        clone2.SetActive(true);
+        clone2.GetComponent<ObjetRésolutionCtrl>().tournerGauche();
+        if(clone2 != null)
+            listeRésolutions.Add(clone2);
+            clone2.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
+
+        GameObject clone3 = Instantiate(unObjetACloner) as GameObject;
+        clone3.SetActive(true);
+        clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
+        if(clone3 != null)
+            listeRésolutions.Add(clone3);
+            clone3.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
+
 
     }
 }
