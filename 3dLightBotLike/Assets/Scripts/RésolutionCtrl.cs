@@ -40,6 +40,7 @@ public class RésolutionCtrl : MonoBehaviour
                         }
                     } else {
                         cloner(uneRésolution);
+                        Destroy(uneRésolution);
                     }
                 }
             }
@@ -47,37 +48,44 @@ public class RésolutionCtrl : MonoBehaviour
     }
 
     private void cloner(GameObject unObjetACloner) {
+        unObjetACloner.SetActive(false);
         GameObject clone1 = Instantiate(unObjetACloner) as GameObject;
+        clone1.SetActive(true);
         clone1.GetComponent<ObjetRésolutionCtrl>().avancer();
         clone1.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
         if(clone1 != null)
             listeRésolutions.Add(clone1);
 
         GameObject clone2 = Instantiate(unObjetACloner) as GameObject;
+        clone2.SetActive(true);
         clone2.GetComponent<ObjetRésolutionCtrl>().tournerGauche();
         clone2.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
         if(clone2 != null)
             listeRésolutions.Add(clone2);
 
         GameObject clone3 = Instantiate(unObjetACloner) as GameObject;
+        clone3.SetActive(true);
         clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
         clone3.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
         if(clone3 != null)
             listeRésolutions.Add(clone3);
 
         GameObject clone4 = Instantiate(unObjetACloner) as GameObject;
+        clone4.SetActive(true);
         clone4.GetComponent<ObjetRésolutionCtrl>().sauter();
         clone4.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
         if(clone4 != null)
             listeRésolutions.Add(clone4);
 
         GameObject clone5 = Instantiate(unObjetACloner) as GameObject;
+        clone5.SetActive(true);
         clone5.GetComponent<ObjetRésolutionCtrl>().sauterGauche();
         clone5.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
         if(clone5 != null)
             listeRésolutions.Add(clone5);
 
         GameObject clone6 = Instantiate(unObjetACloner) as GameObject;
+        clone6.SetActive(true);
         clone6.GetComponent<ObjetRésolutionCtrl>().sauterDroite();
         clone6.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
         if(clone6 != null)
