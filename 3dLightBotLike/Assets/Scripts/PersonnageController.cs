@@ -21,7 +21,6 @@ public class PersonnageController : MonoBehaviour
     [SerializeField]
     private GameObject textPerdu;
 
-    private float rotation;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
 
@@ -201,5 +200,18 @@ public class PersonnageController : MonoBehaviour
             listeDestination.Add(valeur);
         }
         return listeDestination;
+    }
+
+
+    public float getUniteDeplacement() {
+        return uniteDeplacement;
+    }
+
+    public float getHauteurSaut() {
+        return uniteDeplacement;
+    }
+
+    public float getUniteDeplacementSaut() {
+        return uniteDeplacementSaut;
     }
 }
