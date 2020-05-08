@@ -54,7 +54,7 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
     public void sauter() {
         destination = transform.position + (transform.forward);
-        destination = new Vector3(destination.x, this.transform.position.y + hauteurSaut, destination.z)
+        destination = new Vector3(destination.x, this.transform.position.y + hauteurSaut, destination.z);
         this.transform.position = destination;
     }
 

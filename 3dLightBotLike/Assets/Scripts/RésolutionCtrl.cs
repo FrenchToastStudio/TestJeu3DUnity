@@ -16,12 +16,12 @@ public class RésolutionCtrl : MonoBehaviour
 
     // Start is called before the first frame update
     private void Start() {
-        résolution.GetComponent<ObjetRésolutionCtrl>().setUniteDeplacement = personnage.GetComponent<PersonnageController>().getUniteDeplacement();
-        résolution.GetComponent<ObjetRésolutionCtrl>().setHauteurSaut = personnage.GetComponent<PersonnageController>().getHauteurSaut();
-        résolution.GetComponent<ObjetRésolutionCtrl>().setUniteDeplacementSaut = personnage.GetComponent<PersonnageController>().getUniteDeplacementSaut();
+        résolution.GetComponent<ObjetRésolutionCtrl>().setUniteDeplacement(personnage.GetComponent<PersonnageController>().getUniteDeplacement());
+        résolution.GetComponent<ObjetRésolutionCtrl>().setHauteurSaut(personnage.GetComponent<PersonnageController>().getHauteurSaut());
+        résolution.GetComponent<ObjetRésolutionCtrl>().setUniteDeplacementSaut(personnage.GetComponent<PersonnageController>().getUniteDeplacementSaut());
 
         listeRésolutions = new List<GameObject>();
-        listeRésolutions.add(résolution);
+        listeRésolutions.Add(résolution);
 
     }
 
@@ -34,7 +34,7 @@ public class RésolutionCtrl : MonoBehaviour
                     listeRésolutions.Remove(uneRésolution);
                 } else {
                     if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getCompléterNiveau()) {
-                        if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup() < nombreDeCoup){
+                        if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup() < coupMinimum){
                             coupMinimum = uneRésolution.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup();
                             Destroy(uneRésolution);
                         }
@@ -50,27 +50,37 @@ public class RésolutionCtrl : MonoBehaviour
         GameObject clone1 = Instantiate(unObjetACloner) as GameObject;
         clone1.GetComponent<ObjetRésolutionCtrl>().avancer();
         clone1.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
+        if(clone1 != null)
+            listeRésolutions.Add(clone1);
 
         GameObject clone2 = Instantiate(unObjetACloner) as GameObject;
         clone2.GetComponent<ObjetRésolutionCtrl>().tournerGauche();
         clone2.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
+        if(clone2 != null)
+            listeRésolutions.Add(clone2);
 
         GameObject clone3 = Instantiate(unObjetACloner) as GameObject;
         clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
         clone3.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
+        if(clone3 != null)
+            listeRésolutions.Add(clone3);
 
         GameObject clone4 = Instantiate(unObjetACloner) as GameObject;
-        clone1.GetComponent<ObjetRésolutionCtrl>().sauter();
+        clone4.GetComponent<ObjetRésolutionCtrl>().sauter();
         clone4.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
+        if(clone4 != null)
+            listeRésolutions.Add(clone4);
 
         GameObject clone5 = Instantiate(unObjetACloner) as GameObject;
-        clone1.GetComponent<ObjetRésolutionCtrl>().sauterGauche();
+        clone5.GetComponent<ObjetRésolutionCtrl>().sauterGauche();
         clone5.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-
+        if(clone5 != null)
+            listeRésolutions.Add(clone5);
 
         GameObject clone6 = Instantiate(unObjetACloner) as GameObject;
-        clone1.GetComponent<ObjetRésolutionCtrl>().sauterDroite();
+        clone6.GetComponent<ObjetRésolutionCtrl>().sauterDroite();
         clone6.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-
+        if(clone6 != null)
+            listeRésolutions.Add(clone6);
     }
 }
