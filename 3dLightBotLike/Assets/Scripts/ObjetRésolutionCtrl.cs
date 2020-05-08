@@ -14,6 +14,7 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
     private bool enMarche;
     private bool enMouvement = false;
+    private int itérateur = 0;
     private float uniteDeplacement;
     private float hauteurSaut;
     private float uniteDeplacementSaut;
@@ -22,11 +23,16 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
     }
 
+    void LateUpdate() {
+        enMouvement = false;
+        enMarche = false;
+    }
+
     private void OnCollisionEnter(Collision collision){
         if(collision.gameObject.tag == "sol") {
             if (enMarche) {
-                enMarche = false;
-                avancer();
+                this.transform.position = positionDepart;
+                sauter();
             } else {
                 Destroy(this);
             }
@@ -53,13 +59,6 @@ public class ObjetRésolutionCtrl : MonoBehaviour
         enMarche = true;
         positionDepart = this.transform.position;
         destination = transform.position + (transform.forward);
-        this.transform.position = destination;
-        if(!enMarche){
-            this.transform.position = positionDepart;
-            sauter();
-        } else {
-            enMarche = false;
-            enMouvement = false;
         }
 
     }
@@ -75,20 +74,11 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     }
 
     public void sauter() {
+        enMarche = false;
         destination = transform.position + (transform.forward);
         destination = new Vector3(destination.x, this.transform.position.y + hauteurSaut, destination.z);
         this.transform.position = destination;
         enMouvement = false;
-    }
-
-    public void sauterGauche() {
-        tourne(rotationGauche);
-        sauter();
-    }
-
-    public void sauterDroite() {
-        tourne(rotationDroite);
-        sauter();
     }
 
     public void tourne (float rotation){
