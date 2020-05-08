@@ -15,41 +15,67 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     private bool enMarche;
     private bool enMouvement = false;
     private bool enSaut = false;
+    private bool peutSauter = false;
 
     private int itérateur = 0;
+    [SerializeField]
     private float uniteDeplacement;
+    [SerializeField]
     private float hauteurSaut;
+    [SerializeField]
     private float uniteDeplacementSaut;
 
     void Update() {
+        Debug.Log(hauteurSaut);
 
-        if(enMouvement && !enSaut && !enMarche) {
-            enMouvement= false;
+        Debug.Log("Nombre de ocup minimum: " + nombreDeCoup);
+        if (transform.position.x == destination.x && transform.position.z == destination.z ) {
             enMarche = false;
+            enMouvement = false;
         }
+
+        if(!enMarche && !peutSauter && !enSaut) {
+            enMouvement = false;
+        }
+
+        if (enMarche){
+            transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
+        }
+
+    }
+
+    void LateUpdate() {
+
+        if (peutSauter && !enSaut){
+            peutSauter = false;
+            sauter();
+       }
+
     }
 
     private void OnCollisionEnter(Collision collision){
-        if(enSaut) {
+        if(enSaut)
             enSaut = false;
-        }
 
         if(collision.gameObject.tag == "sol") {
-            if (enMarche) {
+            if(enMarche) {
                 this.transform.position = positionDepart;
-                sauter();
+                enMarche = false;
+                peutSauter = true;
             } else {
+                Debug.Log("Toucé");
                 Destroy(this.gameObject);
             }
         }
+
         if(collision.gameObject.tag == "fin") { 
             compléterNiveau = true;
         }
     }
 
-    private void OnCollisionStay(Collision collision){
-        Destroy(this.gameObject);
-    }
+    // private void OnCollisionStay(Collision collision){
+    //     Destroy(this.gameObject);
+    // }
 
     public bool getCompléterNiveau() {
         return compléterNiveau;
@@ -64,14 +90,15 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     }
 
     public void avancer() {
+        ajouterCoup();
         enMouvement = true;
         enMarche = true;
         positionDepart = this.transform.position;
         destination = transform.position + (transform.forward);
-        transform.position = destination;
     }
 
     public void tournerGauche() { 
+        enMouvement = true;
         tourne(rotationGauche);
         avancer();
     }
@@ -82,10 +109,11 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     }
 
     public void sauter() {
-        enSaut = true;
+        Debug.Log("sauter");
         enMarche = false;
-        // GetComponent<Rigidbody>().AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
-        // GetComponent<Rigidbody>().AddForce(transform.forward * uniteDeplacement, ForceMode.Impulse);
+        enSaut = true;
+        GetComponent<Rigidbody>().AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(transform.forward * uniteDeplacement, ForceMode.Impulse);
     }
 
     public void sauterGauche() {
@@ -99,6 +127,7 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     }
 
     public void tourne (float rotation){
+        ajouterCoup();
         transform.Rotate(Vector3.up, rotation);
     }
 
@@ -110,7 +139,9 @@ public class ObjetRésolutionCtrl : MonoBehaviour
         hauteurSaut = unFloat;
     }
 
-
+    public void setNombreDeCoup(int unInt) {
+        nombreDeCoup = unInt;
+    }
     public void setUniteDeplacementSaut(float unFloat) {
         uniteDeplacementSaut = unFloat;
     }
