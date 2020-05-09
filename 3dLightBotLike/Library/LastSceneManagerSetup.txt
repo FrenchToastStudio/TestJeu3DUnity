@@ -1,4 +1,5 @@
 sceneSetups:
-- path: Assets/Scene/DevFinNiveau.unity
+- path: Assets/Scenes/Niveau2.unity
   isLoaded: 1
   isActive: 1
+  isSubScene: 0
