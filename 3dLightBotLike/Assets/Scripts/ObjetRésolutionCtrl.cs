@@ -12,12 +12,13 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     private Vector3 destination;
     private Vector3 positionDepart;
 
-    private bool enMarche;
+    private bool enMarche = false;
     private bool enMouvement = false;
     private bool enSaut = false;
     private bool peutSauter = false;
+    private bool àDétruire = false;
+    private bool peuÊtreCloner = false;
 
-    private int itérateur = 0;
     [SerializeField]
     private float uniteDeplacement;
     [SerializeField]
@@ -26,31 +27,31 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     private float uniteDeplacementSaut;
 
     void Update() {
-        Debug.Log(hauteurSaut);
 
-        Debug.Log("Nombre de ocup minimum: " + nombreDeCoup);
-        if (transform.position.x == destination.x && transform.position.z == destination.z ) {
+        if (peutSauter && !enSaut){
+            peutSauter = false;
             enMarche = false;
-            enMouvement = false;
-        }
-
-        if(!enMarche && !peutSauter && !enSaut) {
-            enMouvement = false;
+            sauter();
         }
 
         if (enMarche){
             transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
         }
-        
-        if (peutSauter && !enSaut){
-            peutSauter = false;
-            sauter();
-        }
+
 
     }
 
     void LateUpdate() {
+        if (transform.position.x == destination.x && transform.position.z == destination.z ) {
+            enMarche = false;
+            enMouvement = false;
+            enSaut = false;
+            peutSauter = false;
+        }
 
+        if(!enMarche && !peutSauter && !enSaut) {
+            enMouvement = false;
+        }
 
     }
 
@@ -62,10 +63,8 @@ public class ObjetRésolutionCtrl : MonoBehaviour
             if(enMarche) {
                 enMarche = false;
                 peutSauter = true;
-                this.transform.position = positionDepart;
             } else {
-                Debug.Log("Toucé");
-                Destroy(this.gameObject);
+                àDétruire = true;
             }
         }
 
@@ -73,10 +72,6 @@ public class ObjetRésolutionCtrl : MonoBehaviour
             compléterNiveau = true;
         }
     }
-
-    // private void OnCollisionStay(Collision collision){
-    //     Destroy(this.gameObject);
-    // }
 
     public bool getCompléterNiveau() {
         return compléterNiveau;
@@ -99,7 +94,6 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     }
 
     public void tournerGauche() { 
-        enMouvement = true;
         tourne(rotationGauche);
         avancer();
     }
@@ -110,21 +104,11 @@ public class ObjetRésolutionCtrl : MonoBehaviour
     }
 
     public void sauter() {
-        Debug.Log("sauter");
-        enMarche = false;
+        enMouvement = true;
         enSaut = true;
+        this.transform.position = positionDepart;
         GetComponent<Rigidbody>().AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
         GetComponent<Rigidbody>().AddForce(transform.forward * uniteDeplacement, ForceMode.Impulse);
-    }
-
-    public void sauterGauche() {
-        tourne(rotationGauche);
-        sauter();
-    }
-
-    public void sauterDroite() {
-        tourne(rotationDroite);
-        sauter();
     }
 
     public void tourne (float rotation){
@@ -149,6 +133,10 @@ public class ObjetRésolutionCtrl : MonoBehaviour
 
     public bool getEnMouvement() {
         return enMouvement;
+    }
+
+    public bool getÀDétruire() {
+        return àDétruire;
     }
 
 }

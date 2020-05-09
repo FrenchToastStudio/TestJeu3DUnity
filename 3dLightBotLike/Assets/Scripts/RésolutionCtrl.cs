@@ -25,22 +25,21 @@ public class RésolutionCtrl : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update() {
+    private void LateUpdate() {
 
         if((coupMinimum == 0)) { 
             foreach(GameObject uneRésolution in listeRésolutions) {
-                if(uneRésolution == null){
+                if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getÀDétruire()){
+                    Destroy(uneRésolution);
                     listeRésolutions.Remove(uneRésolution);
-                } else {
-                    if(!uneRésolution.GetComponent<ObjetRésolutionCtrl>().getEnMouvement()) {
-                        if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getCompléterNiveau()) {
-                                coupMinimum = uneRésolution.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup();
-                                Destroy(uneRésolution);
-                                Debug.Log("Réeussi");
-                        } else {
-                            cloner(uneRésolution);
-                            Destroy(uneRésolution);
-                        }
+                } else if(!uneRésolution.GetComponent<ObjetRésolutionCtrl>().getEnMouvement()){
+                    if(uneRésolution.GetComponent<ObjetRésolutionCtrl>().getCompléterNiveau()) {
+                        coupMinimum = uneRésolution.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup();
+                        Destroy(uneRésolution);
+                    } else {
+                        cloner(uneRésolution);
+                        Destroy(uneRésolution);
+                        listeRésolutions.Remove(uneRésolution);
                     }
                 }
             }
@@ -49,46 +48,27 @@ public class RésolutionCtrl : MonoBehaviour
                 Destroy(uneRésolution);
             }
             personnage.SetActive(true);
-            Debug.Log("Nombre de ocup minimum final: " + coupMinimum);
         }
     }
 
     private void cloner(GameObject unObjetACloner) {
-        unObjetACloner.SetActive(false);
         GameObject clone1 = Instantiate(unObjetACloner) as GameObject;
-        clone1.SetActive(true);
+
         clone1.GetComponent<ObjetRésolutionCtrl>().setNombreDeCoup(unObjetACloner.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup());
         clone1.GetComponent<ObjetRésolutionCtrl>().avancer();
         listeRésolutions.Add(clone1);
 
         GameObject clone2 = Instantiate(unObjetACloner) as GameObject;
-        clone2.SetActive(true);
+
         clone2.GetComponent<ObjetRésolutionCtrl>().setNombreDeCoup(unObjetACloner.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup());
         clone2.GetComponent<ObjetRésolutionCtrl>().tournerGauche();
         listeRésolutions.Add(clone2);
 
         GameObject clone3 = Instantiate(unObjetACloner) as GameObject;
-        clone3.SetActive(true);
+
         clone3.GetComponent<ObjetRésolutionCtrl>().setNombreDeCoup(unObjetACloner.GetComponent<ObjetRésolutionCtrl>().getNombreDeCoup());
         clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
         listeRésolutions.Add(clone3);
-
-        Destroy(unObjetACloner);
-
-        // GameObject clone2 = Instantiate(unObjetACloner) as GameObject;
-        // clone2.SetActive(true);
-        // clone2.GetComponent<ObjetRésolutionCtrl>().tournerGauche();
-        // if(clone2 != null)
-        //     listeRésolutions.Add(clone2);
-        //     clone2.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-
-        // GameObject clone3 = Instantiate(unObjetACloner) as GameObject;
-        // clone3.SetActive(true);
-        // clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
-        // if(clone3 != null)
-        //     listeRésolutions.Add(clone3);
-        //     clone3.GetComponent<ObjetRésolutionCtrl>().ajouterCoup();
-
 
     }
 }
