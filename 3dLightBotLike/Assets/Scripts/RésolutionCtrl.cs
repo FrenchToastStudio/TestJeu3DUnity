@@ -23,6 +23,7 @@ public class RésolutionCtrl : MonoBehaviour
         listeRésolutions.Add(résolution);
 
         personnage.SetActive(false);
+        EcranChargement.SetActive(true);
 
     }
 

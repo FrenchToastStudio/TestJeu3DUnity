@@ -206,6 +206,6 @@ public class PersonnageController : MonoBehaviour
     }
 
     public int getNombreDeCoup() {
-        return
+        return nombreDeCoup;
     }
 }

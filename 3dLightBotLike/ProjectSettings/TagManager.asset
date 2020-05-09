@@ -9,6 +9,7 @@ TagManager:
   - casePacour
   - fin
   - btnSequence
+  - personnagePrincipale
   layers:
   - Default
   - TransparentFX
