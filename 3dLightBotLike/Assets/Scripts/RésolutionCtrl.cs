@@ -8,6 +8,8 @@ public class RésolutionCtrl : MonoBehaviour
     private GameObject personnage;
     [SerializeField]
     private GameObject résolution;
+    [SerializeField]
+    private GameObject EcranChargement;
 
 
     List<GameObject> listeRésolutions;
@@ -48,6 +50,7 @@ public class RésolutionCtrl : MonoBehaviour
                 Destroy(uneRésolution);
             }
             personnage.SetActive(true);
+            EcranChargement.SetActive(false);
         }
     }
 
@@ -70,5 +73,9 @@ public class RésolutionCtrl : MonoBehaviour
         clone3.GetComponent<ObjetRésolutionCtrl>().tournerDroite();
         listeRésolutions.Add(clone3);
 
+    }
+
+    public int getCoupMinimum() {
+        return coupMinimum;
     }
 }

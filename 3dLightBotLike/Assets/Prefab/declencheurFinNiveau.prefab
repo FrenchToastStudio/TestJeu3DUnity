@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5696440211409953131}
   m_Layer: 0
   m_Name: declencheurFinNiveau
-  m_TagString: Untagged
+  m_TagString: fin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

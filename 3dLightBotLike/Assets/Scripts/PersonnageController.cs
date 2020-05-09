@@ -24,6 +24,8 @@ public class PersonnageController : MonoBehaviour
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
 
+    private int nombreDeCoup;
+
     private Vector3 positionDebutNiveau;
     private Vector3 positionDepart;
     private Vector3 destination;
@@ -155,6 +157,7 @@ public class PersonnageController : MonoBehaviour
                 sequence = copyList(historiqueSequence);
             historiqueSequence = copyList(sequence);
             go =true;
+            nombreDeCoup = sequence.Count;
         }
     }
 
@@ -202,16 +205,7 @@ public class PersonnageController : MonoBehaviour
         return listeDestination;
     }
 
-
-    public float getUniteDeplacement() {
-        return uniteDeplacement;
-    }
-
-    public float getHauteurSaut() {
-        return uniteDeplacement;
-    }
-
-    public float getUniteDeplacementSaut() {
-        return uniteDeplacementSaut;
+    public int getNombreDeCoup() {
+        return
     }
 }
