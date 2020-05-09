@@ -232,8 +232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniteDeplacement: 1
-  hauteurSaut: 4
-  uniteDeplacementSaut: 1.5
+  hauteurSaut: 4.5
+  uniteDeplacementSaut: 1.3
 --- !u!1001 &494625412
 PrefabInstance:
   m_ObjectHideFlags: 0
