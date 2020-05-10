@@ -71,7 +71,6 @@ public class PersonnageController : MonoBehaviour
         }
 
         if(!enMouvement && sequence.Count > 0 && go){
-            Debug.Log("inside if - commande : " + sequence[0]);
             positionDepart = transform.position;
             enMouvement = true;
             switch(sequence[0]){
@@ -121,6 +120,7 @@ public class PersonnageController : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision){
+        print(collision.gameObject.tag);
         animateur.SetBool("estAuSol", true);
         if(saute){
             enMouvement = false;
@@ -128,6 +128,10 @@ public class PersonnageController : MonoBehaviour
         }
         if(collision.gameObject.tag == "sol"){
             sceneCtrl.perdu();
+        }
+        if(collision.gameObject.tag == "fin"){
+            print("objectif");
+            sceneCtrl.chargerScene("DevFinNiveau");
         }
     }
 

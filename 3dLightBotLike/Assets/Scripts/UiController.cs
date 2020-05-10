@@ -102,6 +102,7 @@ public class UiController : MonoBehaviour
     }
 
     public void LancerSequence(){
+        print("go");
         if(sequence.Count == 0){
             txtErreur.SetActive(true);
         } else {
