@@ -8,13 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Niveau1.unity
     guid: 1309f89b4259525e99291178eadf502d
-  - enabled: 0
-    path: Assets/Scenes/Scene1.unity
-    guid: d1d90ba23591b2beb9a2a0c6aa2e2cc3
   - enabled: 1
     path: Assets/Scenes/ScenePerdu.unity
     guid: 5bba8addf76015186b59a3a4accc1526
   - enabled: 1
-    path: Assets/Scenes/DevFinNiveau.unity
-    guid: 52b370df69d4219f5b6a2c5b2a3d5e01
+    path: Assets/Scenes/Niveau2.unity
+    guid: 1e814d5690c9460c6ace27a53cab86f5
   m_configObjects: {}

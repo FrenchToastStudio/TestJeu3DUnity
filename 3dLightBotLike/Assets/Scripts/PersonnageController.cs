@@ -6,19 +6,23 @@ using UnityEngine;
 public class PersonnageController : MonoBehaviour
 {
 
-    [SerializeField] private float uniteDeplacement = 1f;
-    [SerializeField] private float hauteurSaut = 4.5f;
-    [SerializeField] private float uniteDeplacementSaut = 1.30f;
-    [SerializeField] private Animator animateur;
+    [SerializeField]
+    private float uniteDeplacement;
+    [SerializeField]
+    private float hauteurSaut;
+    [SerializeField]
+    private float uniteDeplacementSaut;
+    [SerializeField]
+    private Animator animateur;
 
     [SerializeField] private GameObject UIgameplay;
-    [SerializeField] private GameObject textPerdu;
 
     [SerializeField] private SceneCtrl sceneCtrl;
 
-    private float rotation;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
+
+    private static int nombreDeCoup;
 
     private Vector3 positionDebutNiveau;
     private float positionDebutNiveauRotation;
@@ -42,6 +46,7 @@ public class PersonnageController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nombreDeCoup = 0;
         rigidbody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         // Pour initialiser un restart
@@ -129,10 +134,6 @@ public class PersonnageController : MonoBehaviour
         if(collision.gameObject.tag == "sol"){
             sceneCtrl.perdu();
         }
-        if(collision.gameObject.tag == "fin"){
-            print("objectif");
-            sceneCtrl.chargerScene("DevFinNiveau");
-        }
     }
 
     public void getPositionPersonnage(){
@@ -142,7 +143,9 @@ public class PersonnageController : MonoBehaviour
     public static void SetSequence (List<String> sequenceMouvement){
         sequence = sequenceMouvement;
         go =true;
+        nombreDeCoup = sequence.Count;
     }
+
 
     public static void Restart(){
         restart = true;
@@ -159,4 +162,15 @@ public class PersonnageController : MonoBehaviour
         transform.Rotate(Vector3.up, rotation);
     }
 
+    private List<String> copyList (List<String> listeOriginale){
+        List<String> listeDestination = new List<string>();
+        foreach(String valeur in listeOriginale){
+            listeDestination.Add(valeur);
+        }
+        return listeDestination;
+    }
+
+    public int getNombreDeCoup() {
+        return nombreDeCoup;
+    }
 }
