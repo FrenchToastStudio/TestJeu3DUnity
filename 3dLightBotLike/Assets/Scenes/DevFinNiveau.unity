@@ -448,6 +448,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 507861769723363784, guid: 4216f137c0b4e7c01ab831f73bf7d19f,
+        type: 3}
+      propertyPath: m_Text
+      value: "Niveau Termin\xE9 !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 507861769727571528, guid: 4216f137c0b4e7c01ab831f73bf7d19f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Niveau2
+      objectReference: {fileID: 0}
     - target: {fileID: 507861770544915827, guid: 4216f137c0b4e7c01ab831f73bf7d19f,
         type: 3}
       propertyPath: m_LocalPosition.x

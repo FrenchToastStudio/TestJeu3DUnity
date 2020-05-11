@@ -34,14 +34,13 @@ public class PersonnageController : MonoBehaviour
     bool saute = false;
     private static bool restart = false;
 
-    private static List<String> sequence = new List<string>();
-
-
+    private static List<String> sequence;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        sequence = new List<string>();
         rigidbody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         // Pour initialiser un restart
@@ -117,6 +116,7 @@ public class PersonnageController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
         }
 
+
     }
 
     void OnCollisionEnter(Collision collision){
@@ -128,10 +128,12 @@ public class PersonnageController : MonoBehaviour
         }
         if(collision.gameObject.tag == "sol"){
             sceneCtrl.perdu();
+            restart = true;
+            sequence = new List<string>();
         }
         if(collision.gameObject.tag == "fin"){
-            print("objectif");
             sceneCtrl.chargerScene("DevFinNiveau");
+            sceneCtrl.AugmenterNiveau();
         }
     }
 

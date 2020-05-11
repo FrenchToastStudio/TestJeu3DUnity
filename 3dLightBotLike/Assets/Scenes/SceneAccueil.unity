@@ -403,7 +403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Vous avez perdu ! Dommage.
+  m_text: "O\xF9 est mon caf\xE9 ?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -472,12 +472,12 @@ MonoBehaviour:
   m_margin: {x: -165.9971, y: 0, z: -80.81574, w: -38.803207}
   m_textInfo:
     textComponent: {fileID: 488332065}
-    characterCount: 26
+    characterCount: 17
     spriteCount: 0
     spaceCount: 4
     wordCount: 4
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -862,14 +862,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 209634699}
-        m_MethodName: rejouer
-        m_Mode: 1
+        m_MethodName: chargerScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Niveau1
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &1501640276
@@ -976,7 +976,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rejouer
+  m_Text: Lancer
 --- !u!222 &1524229717
 CanvasRenderer:
   m_ObjectHideFlags: 0
