@@ -737,6 +737,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personnage: {fileID: 6486054974305702806}
+--- !u!1 &656561538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5701683915130402041, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+    type: 3}
+  m_PrefabInstance: {fileID: 4045028111312473381}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &786236775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,6 +2177,11 @@ PrefabInstance:
       propertyPath: layoutSequence
       value: 
       objectReference: {fileID: 116256737}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: layoutProcedure
+      value: 
+      objectReference: {fileID: 656561538}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4cfb2009910f0b9fa02754340a95951, type: 3}
 --- !u!1001 &9084859756332585991

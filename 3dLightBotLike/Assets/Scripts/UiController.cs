@@ -163,9 +163,13 @@ public class UiController : MonoBehaviour
         PersonnageController.Restart();
     }
 
-    public static void ActionToDelete (int position){
-        Debug.Log();
-        sequence.RemoveAt(position);
+    public static void ActionToDelete (int position, string nomListe){
+        Debug.Log(nomListe == "ContainerSequence");
+        if(nomListe == "ContainerSequence")
+            sequence.RemoveAt(position);
+        else
+            procedure.RemoveAt(position);
+        //sequence.RemoveAt(position);
         modificationAffichage = true;
     }
 
