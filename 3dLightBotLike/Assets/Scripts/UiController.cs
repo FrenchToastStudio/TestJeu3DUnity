@@ -76,7 +76,7 @@ public class UiController : MonoBehaviour
         imageObjetAvance.tag = "btnSequence";
         imageObjetAvance.name =  numBouton.ToString();
         imageObjetAvance.AddComponent<btnCtrl>();
-        imageObjetAvance.GetComponent<RectTransform>().transform.localScale = new Vector2(0.3f,0.3f);
+        imageObjetAvance.GetComponent<RectTransform>().transform.localScale = new Vector2(0.2f,0.2f);
         imageObjetAvance.GetComponent<RectTransform>().SetParent(layout.transform);
         imageObjetAvance.SetActive(true);
     }
