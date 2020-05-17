@@ -1,5 +1,0 @@
-sceneSetups:
-- path: "Assets/Scenes/DevR\xE9solutionAutomatique.unity"
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
