@@ -82,7 +82,7 @@ public class PersonnageController : MonoBehaviour
                 case "Saut":
                     saut();
                     saute = true;
-                    timeLeft = 1.0f;
+                    timeLeft = 1.5f;
                     break;
                 case "Gauche":
                     tourne(rotationGauche);

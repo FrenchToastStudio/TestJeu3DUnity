@@ -13,7 +13,8 @@ using UnityEngine.EventSystems;
 public class UiController : MonoBehaviour
 {
     [SerializeField] private GameObject UIgameplay;
-    [SerializeField] private GameObject layout;
+    [SerializeField] private GameObject layoutSequence;
+    [SerializeField] private GameObject layoutProcedure;
     [SerializeField] private GameObject btnMouvementAvance;
     [SerializeField] private GameObject btnMouvementSaut;
     [SerializeField] private GameObject btnMouvementGauche;
@@ -31,11 +32,13 @@ public class UiController : MonoBehaviour
 
     
     private static List<String> sequence = new List<string>();
+    private static List<String> procedure;
     private List<String> listeDestination = new List<string>();
     private static bool modificationAffichage = false;
 
     void Start(){
         sequence = new List<string>();
+        procedure = new List<string>();
     }
     
     void Update(){
@@ -52,24 +55,45 @@ public class UiController : MonoBehaviour
                 txtErreur.SetActive(false);
                 switch(sequence[i]){
                     case "Avance":
-                        genererBoutonSequence(i, spriteAvance);               
+                        genererBoutonSequence(i, spriteAvance, layoutSequence);               
                         break;
                     case "Gauche":
-                        genererBoutonSequence(i, spriteGauche);
+                        genererBoutonSequence(i, spriteGauche, layoutSequence);
                         break;
                     case "Droite":
-                        genererBoutonSequence(i, spriteDroite);
+                        genererBoutonSequence(i, spriteDroite, layoutSequence);
                         break;
                     case "Saut":
-                        genererBoutonSequence(i, spriteSaute);
+                        genererBoutonSequence(i, spriteSaute, layoutSequence);
                         break;
                 }
             }
+
+            // Parcours le tableau de procedure pour mettre à jour l'affichage
+            for(int i=0; i<procedure.Count; i++){
+                txtErreur.SetActive(false);
+                switch(procedure[i]){
+                    case "Avance":
+                        genererBoutonSequence(i, spriteAvance, layoutProcedure);               
+                        break;
+                    case "Gauche":
+                        genererBoutonSequence(i, spriteGauche, layoutProcedure);
+                        break;
+                    case "Droite":
+                        genererBoutonSequence(i, spriteDroite, layoutProcedure);
+                        break;
+                    case "Saut":
+                        genererBoutonSequence(i, spriteSaute, layoutProcedure);
+                        break;
+                }
+            }
+            Debug.Log(sequence.Count);
+            Debug.Log(procedure.Count);
         }
         modificationAffichage = false;
     }
 
-    public void genererBoutonSequence(int numBouton, Sprite sprite){
+    public void genererBoutonSequence(int numBouton, Sprite sprite, GameObject layoutContainer){
         GameObject imageObjetAvance = new GameObject();
         Image imageAvance = imageObjetAvance.AddComponent<Image>();
         imageAvance.sprite = sprite;
@@ -77,27 +101,39 @@ public class UiController : MonoBehaviour
         imageObjetAvance.name =  numBouton.ToString();
         imageObjetAvance.AddComponent<btnCtrl>();
         imageObjetAvance.GetComponent<RectTransform>().transform.localScale = new Vector2(0.2f,0.2f);
-        imageObjetAvance.GetComponent<RectTransform>().SetParent(layout.transform);
+        imageObjetAvance.GetComponent<RectTransform>().SetParent(layoutContainer.transform);
         imageObjetAvance.SetActive(true);
     }
 
-    public void setMouvementGauche(){
-        sequence.Add("Gauche");
+    public void setMouvementGauche(String layoutDestination){
+        if(layoutDestination == "sequence")
+            sequence.Add("Gauche");
+        else
+            procedure.Add("Gauche");
         modificationAffichage =true;
     }
 
-    public void setMouvementAvance(){
-        sequence.Add("Avance");
+    public void setMouvementAvance(String layoutDestination){
+        if(layoutDestination == "sequence")
+            sequence.Add("Avance");
+        else
+            procedure.Add("Avance");
         modificationAffichage =true;
     }
 
-    public void setMouvementDroite(){
-        sequence.Add("Droite");
+    public void setMouvementDroite(String layoutDestination){
+        if(layoutDestination == "sequence")
+            sequence.Add("Droite");
+        else
+            procedure.Add("Droite");
         modificationAffichage =true;
     }
 
-    public void setMouvementSaut(){
-        sequence.Add("Saut");
+    public void setMouvementSaut(String layoutDestination){
+        if(layoutDestination == "sequence")
+            sequence.Add("Saut");
+        else
+            procedure.Add("Saut");
         modificationAffichage =true;
     }
 
@@ -128,6 +164,7 @@ public class UiController : MonoBehaviour
     }
 
     public static void ActionToDelete (int position){
+        Debug.Log();
         sequence.RemoveAt(position);
         modificationAffichage = true;
     }
