@@ -36,6 +36,7 @@ public class PersonnageController : MonoBehaviour
 
     private static List<String> sequence;
 
+    float timeLeft = 2.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,7 @@ public class PersonnageController : MonoBehaviour
 
     void Update()
     {
+        
         if(restart == true){
             transform.position = positionDebutNiveau;
             transform.rotation = Quaternion.Euler(0, positionDebutNiveauRotation, 0);
@@ -66,7 +68,6 @@ public class PersonnageController : MonoBehaviour
         if(transform.position.z == destination.z && transform.position.x == destination.x){
             animateur.SetBool("marche", false);
             marche = false;
-            enMouvement = false;
         }
 
         if(!enMouvement && sequence.Count > 0 && go){
@@ -76,25 +77,32 @@ public class PersonnageController : MonoBehaviour
                 case "Avance":
                     destination = transform.position + (transform.forward);
                     marche = true;
+                    timeLeft = 1.5f;
                     break;
                 case "Saut":
                     saut();
                     saute = true;
+                    timeLeft = 1.0f;
                     break;
                 case "Gauche":
                     tourne(rotationGauche);
                     getPositionPersonnage();
-                    enMouvement = false;
+                    timeLeft = .5f;
                     break;
                 case "Droite":
                     tourne(rotationDroite);
                     getPositionPersonnage();
-                    enMouvement = false;
+                    timeLeft = .5f;
                     break;
             }
             sequence.RemoveAt(0);
+            
         }
 
+        // Fonction timer
+        timeLeft -= Time.deltaTime;
+        if(timeLeft < 0)
+            enMouvement = false; 
 
         //Gestion du déplacement vers l'avant
         if(Input.GetKeyDown(KeyCode.W)){
@@ -116,14 +124,13 @@ public class PersonnageController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
         }
 
-
     }
 
     void OnCollisionEnter(Collision collision){
         print(collision.gameObject.tag);
         animateur.SetBool("estAuSol", true);
         if(saute){
-            enMouvement = false;
+            //enMouvement = false;
             saute = false;
         }
         if(collision.gameObject.tag == "sol"){
