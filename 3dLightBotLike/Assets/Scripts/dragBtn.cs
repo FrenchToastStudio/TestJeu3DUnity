@@ -57,7 +57,11 @@ public class dragBtn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
                 uiController.setMouvementDroite(layoutDestination);
             } else if(this.gameObject.name.Contains("btnGauche")){
                 uiController.setMouvementGauche(layoutDestination);
+            } else if(this.gameObject.name.Contains("btnProcedure")){
+                uiController.addProcedure();
             }
+
+
         } else if(RectTransformUtility.RectangleContainsScreenPoint(receveurContainerProcedure, Input.mousePosition)){
             layoutDestination = "other";
             if(this.gameObject.name.Contains("btnSaut")){

@@ -29,6 +29,7 @@ public class UiController : MonoBehaviour
     [SerializeField] private Sprite spriteGauche;
     [SerializeField] private Sprite spriteDroite;
     [SerializeField] private Sprite spriteSaute;
+    [SerializeField] private Sprite spriteProcedure;
 
     
     private static List<String> sequence = new List<string>();
@@ -66,6 +67,9 @@ public class UiController : MonoBehaviour
                     case "Saut":
                         genererBoutonSequence(i, spriteSaute, layoutSequence);
                         break;
+                    case "Procedure":
+                        genererBoutonSequence(i, spriteProcedure, layoutSequence);
+                        break;
                 }
             }
 
@@ -100,7 +104,7 @@ public class UiController : MonoBehaviour
         imageObjetAvance.tag = "btnSequence";
         imageObjetAvance.name =  numBouton.ToString();
         imageObjetAvance.AddComponent<btnCtrl>();
-        imageObjetAvance.GetComponent<RectTransform>().transform.localScale = new Vector2(0.2f,0.2f);
+        imageObjetAvance.GetComponent<RectTransform>().transform.localScale = new Vector2(1f,1f);
         imageObjetAvance.GetComponent<RectTransform>().SetParent(layoutContainer.transform);
         imageObjetAvance.SetActive(true);
     }
@@ -143,10 +147,18 @@ public class UiController : MonoBehaviour
             txtErreur.SetActive(true);
         } else {
             listeDestination = copyList(sequence);
-            PersonnageController.SetSequence(sequence);
+            PersonnageController.SetSequenceComplete(sequence, procedure);
             txtgo.SetActive(false);
         }
     }
+
+    public void addProcedure(){
+        sequence.Add("Procedure");
+        //sequence.AddRange(procedure);
+        Debug.Log("procedure ajouter");
+        modificationAffichage =true;
+    }
+
 
     private List<String> copyList (List<String> listeOriginale){
         List<String> listeDestination = new List<string>();

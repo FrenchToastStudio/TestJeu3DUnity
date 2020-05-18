@@ -34,7 +34,8 @@ public class PersonnageController : MonoBehaviour
     bool saute = false;
     private static bool restart = false;
 
-    private static List<String> sequence;
+    private static List<string> sequence;
+    private static List<string> procedure;
 
     float timeLeft = 2.0f;
 
@@ -42,6 +43,7 @@ public class PersonnageController : MonoBehaviour
     void Start()
     {
         sequence = new List<string>();
+        procedure = new List<string>();
         rigidbody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         // Pour initialiser un restart
@@ -64,7 +66,6 @@ public class PersonnageController : MonoBehaviour
             animateur.SetBool("saute", false);
         }
 
-
         if(transform.position.z == destination.z && transform.position.x == destination.x){
             animateur.SetBool("marche", false);
             marche = false;
@@ -73,7 +74,9 @@ public class PersonnageController : MonoBehaviour
         if(!enMouvement && sequence.Count > 0 && go){
             positionDepart = transform.position;
             enMouvement = true;
-            switch(sequence[0]){
+            string mouvement = sequence[0];
+            sequence.RemoveAt(0);
+            switch(mouvement){
                 case "Avance":
                     destination = transform.position + (transform.forward);
                     marche = true;
@@ -94,9 +97,11 @@ public class PersonnageController : MonoBehaviour
                     getPositionPersonnage();
                     timeLeft = .5f;
                     break;
+                case "Procedure":
+                    sequence.InsertRange(0, procedure);
+                    // = procedure.Concat(sequence).ToList();
+                    break;
             }
-            sequence.RemoveAt(0);
-            
         }
 
         // Fonction timer
@@ -148,8 +153,9 @@ public class PersonnageController : MonoBehaviour
         positionDepart = transform.position;
     }
 
-    public static void SetSequence (List<String> sequenceMouvement){
+    public static void SetSequenceComplete(List<string> sequenceMouvement, List<string> procedureMouvement){
         sequence = sequenceMouvement;
+        procedure = procedureMouvement;
         go =true;
     }
 
