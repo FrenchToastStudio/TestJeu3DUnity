@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+
+
 
 public class FinNiveauCtrl : MonoBehaviour
 {
@@ -12,6 +16,12 @@ public class FinNiveauCtrl : MonoBehaviour
     [SerializeField] GameObject nombreDeCoupMinimum;
     [SerializeField] GameObject UIgameplay;
 
+
+    private int niveauReussi;
+
+    void update(){
+
+    }
 
     void OnTriggerEnter(Collider col) {
         if(col.gameObject.tag == "personnagePrincipale") {
@@ -27,6 +37,7 @@ public class FinNiveauCtrl : MonoBehaviour
             nombreDeCoupMinimum.GetComponent<Text>().text = "Nombre de coup minimum: " + controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum();
 
             menuNiveauTerminer.SetActive(true);
+            niveauReussi += 1;
             Time.timeScale = 0;
         }
     }
