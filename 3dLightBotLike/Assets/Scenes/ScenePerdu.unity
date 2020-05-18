@@ -150,9 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51878fd4728e011aa7dff05ee7d691f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadSceneBtn: {fileID: 0}
   UIgameplay: {fileID: 0}
-  textPerdu: {fileID: 0}
 --- !u!4 &209634700
 Transform:
   m_ObjectHideFlags: 0
@@ -873,7 +871,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1501640276
 MonoBehaviour:
   m_ObjectHideFlags: 0
