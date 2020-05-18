@@ -91,8 +91,6 @@ public class UiController : MonoBehaviour
                         break;
                 }
             }
-            Debug.Log(sequence.Count);
-            Debug.Log(procedure.Count);
         }
         modificationAffichage = false;
     }
@@ -142,7 +140,6 @@ public class UiController : MonoBehaviour
     }
 
     public void LancerSequence(){
-        print("go");
         if(sequence.Count == 0){
             txtErreur.SetActive(true);
         } else {
@@ -154,8 +151,6 @@ public class UiController : MonoBehaviour
 
     public void addProcedure(){
         sequence.Add("Procedure");
-        //sequence.AddRange(procedure);
-        Debug.Log("procedure ajouter");
         modificationAffichage =true;
     }
 
@@ -176,12 +171,10 @@ public class UiController : MonoBehaviour
     }
 
     public static void ActionToDelete (int position, string nomListe){
-        Debug.Log(nomListe == "ContainerSequence");
         if(nomListe == "ContainerSequence")
             sequence.RemoveAt(position);
         else
             procedure.RemoveAt(position);
-        //sequence.RemoveAt(position);
         modificationAffichage = true;
     }
 

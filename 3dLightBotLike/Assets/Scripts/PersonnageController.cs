@@ -99,7 +99,6 @@ public class PersonnageController : MonoBehaviour
                     break;
                 case "Procedure":
                     sequence.InsertRange(0, procedure);
-                    // = procedure.Concat(sequence).ToList();
                     break;
             }
         }
@@ -132,10 +131,8 @@ public class PersonnageController : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision){
-        print(collision.gameObject.tag);
         animateur.SetBool("estAuSol", true);
         if(saute){
-            //enMouvement = false;
             saute = false;
         }
         if(collision.gameObject.tag == "sol"){
