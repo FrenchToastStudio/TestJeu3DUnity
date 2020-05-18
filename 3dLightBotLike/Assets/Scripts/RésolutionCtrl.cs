@@ -16,6 +16,8 @@ public class RésolutionCtrl : MonoBehaviour
 
     int coupMinimum = 0;
 
+
+
     // Start is called before the first frame update
     private void Start() {
 
@@ -24,6 +26,7 @@ public class RésolutionCtrl : MonoBehaviour
 
         personnage.SetActive(false);
         EcranChargement.SetActive(true);
+        Time.timeScale = 5.0f;
 
     }
 
@@ -50,8 +53,11 @@ public class RésolutionCtrl : MonoBehaviour
             foreach(GameObject uneRésolution in listeRésolutions) {
                 Destroy(uneRésolution);
             }
+
+            Debug.Log("nombre de coup: " + coupMinimum);
             personnage.SetActive(true);
             EcranChargement.SetActive(false);
+            Time.timeScale = 1.0f;
         }
     }
 

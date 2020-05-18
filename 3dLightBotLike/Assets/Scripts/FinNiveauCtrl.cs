@@ -24,22 +24,23 @@ public class FinNiveauCtrl : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider col) {
-        if(col.gameObject.tag == "personnagePrincipale") {
+    }
 
-            UIgameplay.SetActive(false);
+    public void lancer(int nombreDeCoup) {
+        UIgameplay.SetActive(false);
 
-            if(col.gameObject.GetComponent<PersonnageController>().getNombreDeCoup() <= controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum()){
-                textRésultat.GetComponent<Text>().text = "Vous avez Réeussi...";
-            } else {
-                textRésultat.GetComponent<Text>().text = "Vous avez perdu...";
-            }
-            nombreDeCoupJoueur.GetComponent<Text>().text = "Votre nombre de coup: " + col.gameObject.GetComponent<PersonnageController>().getNombreDeCoup();
-            nombreDeCoupMinimum.GetComponent<Text>().text = "Nombre de coup minimum: " + controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum();
-
-            menuNiveauTerminer.SetActive(true);
-            niveauReussi += 1;
-            Time.timeScale = 0;
+        if(nombreDeCoup <= controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum()){
+            textRésultat.GetComponent<Text>().text = "Vous avez Réeussi...";
+        } else {
+            textRésultat.GetComponent<Text>().text = "Vous avez perdu...";
         }
+
+        nombreDeCoupJoueur.GetComponent<Text>().text = "Votre nombre de coup: " + nombreDeCoup;
+        nombreDeCoupMinimum.GetComponent<Text>().text = "Nombre de coup minimum: " + controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum();
+
+        menuNiveauTerminer.SetActive(true);
+        niveauReussi += 1;
+        Time.timeScale = 0;
     }
 
 }
