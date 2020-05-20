@@ -1178,6 +1178,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d70a27546822c004b81f0b6ce1dda5aa, type: 3}
+--- !u!1 &265710243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5701683915130402041, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+    type: 3}
+  m_PrefabInstance: {fileID: 1996071024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &269215723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3423,6 +3429,22 @@ PrefabInstance:
       propertyPath: btnRestart
       value: 
       objectReference: {fileID: 78286439}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: layoutProcedure
+      value: 
+      objectReference: {fileID: 265710243}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: layoutSequence
+      value: 
+      objectReference: {fileID: 1453300826}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: spriteProcedure
+      value: 
+      objectReference: {fileID: 21300000, guid: 2f706394cf20e230990778780ca9d503,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4cfb2009910f0b9fa02754340a95951, type: 3}
 --- !u!1 &1370493936 stripped
@@ -4991,22 +5013,22 @@ PrefabInstance:
     - target: {fileID: 4045028111422726854, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -42
       objectReference: {fileID: 0}
     - target: {fileID: 4045028111422726854, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 103.8
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 4045028111422726854, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 536.5
+      value: -212.35
       objectReference: {fileID: 0}
     - target: {fileID: 4045028111422726854, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 87.6
+      value: 103.8
       objectReference: {fileID: 0}
     - target: {fileID: 4045028111422726854, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
