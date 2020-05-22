@@ -58,7 +58,7 @@ public class PersonnageController : MonoBehaviour
 
     void Update()
     {
-        
+
         if(restart == true){
             transform.position = positionDebutNiveau;
             transform.rotation = Quaternion.Euler(0, positionDebutNiveauRotation, 0);
@@ -101,13 +101,13 @@ public class PersonnageController : MonoBehaviour
                     break;
             }
             sequence.RemoveAt(0);
-            
+
         }
 
         // Fonction timer
         timeLeft -= Time.deltaTime;
         if(timeLeft < 0)
-            enMouvement = false; 
+            enMouvement = false;
 
         //Gestion du déplacement vers l'avant
         if(Input.GetKeyDown(KeyCode.W)){
@@ -144,8 +144,7 @@ public class PersonnageController : MonoBehaviour
             sequence = new List<string>();
         }
         if(collision.gameObject.tag == "fin"){
-            sceneCtrl.chargerScene("DevFinNiveau");
-            sceneCtrl.AugmenterNiveau();
+            collision.gameObject.GetComponent<FinNiveauCtrl>().lancer(nombreDeCoup);
         }
     }
 

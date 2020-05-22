@@ -64,12 +64,14 @@ public class ObjetRésolutionCtrl : MonoBehaviour
                 enMarche = false;
                 peutSauter = true;
             } else {
+                enMarche = false;
                 àDétruire = true;
             }
         }
 
         if(collision.gameObject.tag == "fin") { 
             compléterNiveau = true;
+            enMarche = false;
         }
     }
 

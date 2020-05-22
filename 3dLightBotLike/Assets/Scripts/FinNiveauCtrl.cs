@@ -15,31 +15,33 @@ public class FinNiveauCtrl : MonoBehaviour
     [SerializeField] GameObject nombreDeCoupJoueur;
     [SerializeField] GameObject nombreDeCoupMinimum;
     [SerializeField] GameObject UIgameplay;
+    [SerializeField] GameObject sauvegardeCtrl;
 
 
     private int niveauReussi;
 
-    void update(){
-
+    private void Start() {
+        if(niveauReussi == null) {
+            niveauReussi = 0;
+        }
     }
 
-    void OnTriggerEnter(Collider col) {
-        if(col.gameObject.tag == "personnagePrincipale") {
+    public void lancer(int nombreDeCoup) {
+        UIgameplay.SetActive(false);
 
-            UIgameplay.SetActive(false);
 
-            if(col.gameObject.GetComponent<PersonnageController>().getNombreDeCoup() <= controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum()){
-                textRésultat.GetComponent<Text>().text = "Vous avez Réeussi...";
-            } else {
-                textRésultat.GetComponent<Text>().text = "Vous avez perdu...";
-            }
-            nombreDeCoupJoueur.GetComponent<Text>().text = "Votre nombre de coup: " + col.gameObject.GetComponent<PersonnageController>().getNombreDeCoup();
-            nombreDeCoupMinimum.GetComponent<Text>().text = "Nombre de coup minimum: " + controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum();
-
-            menuNiveauTerminer.SetActive(true);
-            niveauReussi += 1;
-            Time.timeScale = 0;
+        if(nombreDeCoup <= controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum()){
+            textRésultat.GetComponent<Text>().text = "Vous avez Réeussi...";
+            sauvegardeCtrl.GetComponent<SauvegardeCtrl>().débloquéNiveau();
+        } else {
+            textRésultat.GetComponent<Text>().text = "Vous avez perdu...";
         }
+
+        nombreDeCoupJoueur.GetComponent<Text>().text = "Votre nombre de coup: " + nombreDeCoup;
+        nombreDeCoupMinimum.GetComponent<Text>().text = "Nombre de coup minimum: " + controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum();
+
+        menuNiveauTerminer.SetActive(true);
+        Time.timeScale = 0;
     }
 
 }
