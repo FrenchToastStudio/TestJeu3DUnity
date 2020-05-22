@@ -15,22 +15,24 @@ public class FinNiveauCtrl : MonoBehaviour
     [SerializeField] GameObject nombreDeCoupJoueur;
     [SerializeField] GameObject nombreDeCoupMinimum;
     [SerializeField] GameObject UIgameplay;
+    [SerializeField] GameObject sauvegardeCtrl;
 
 
     private int niveauReussi;
 
-    void update(){
-
-    }
-
-    void OnTriggerEnter(Collider col) {
+    private void Start() {
+        if(niveauReussi == null) {
+            niveauReussi = 0;
+        }
     }
 
     public void lancer(int nombreDeCoup) {
         UIgameplay.SetActive(false);
 
+
         if(nombreDeCoup <= controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum()){
             textRésultat.GetComponent<Text>().text = "Vous avez Réeussi...";
+            sauvegardeCtrl.GetComponent<SauvegardeCtrl>().débloquéNiveau();
         } else {
             textRésultat.GetComponent<Text>().text = "Vous avez perdu...";
         }
@@ -39,7 +41,6 @@ public class FinNiveauCtrl : MonoBehaviour
         nombreDeCoupMinimum.GetComponent<Text>().text = "Nombre de coup minimum: " + controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum();
 
         menuNiveauTerminer.SetActive(true);
-        niveauReussi += 1;
         Time.timeScale = 0;
     }
 
