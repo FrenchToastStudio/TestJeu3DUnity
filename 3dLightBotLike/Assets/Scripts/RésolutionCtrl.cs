@@ -53,8 +53,6 @@ public class RésolutionCtrl : MonoBehaviour
             foreach(GameObject uneRésolution in listeRésolutions) {
                 Destroy(uneRésolution);
             }
-
-            Debug.Log("nombre de coup: " + coupMinimum);
             personnage.SetActive(true);
             EcranChargement.SetActive(false);
             Time.timeScale = 1.0f;
