@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6439516680413306024
+--- !u!1 &6059819982877134667
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6439516680413306023}
-  - component: {fileID: 6439516680413306022}
-  - component: {fileID: 6439516680413306025}
-  - component: {fileID: 2541001685570065960}
-  - component: {fileID: 2425248438699911865}
+  - component: {fileID: 6059819982877134660}
+  - component: {fileID: 6059819982877134661}
+  - component: {fileID: 6059819982877134666}
+  - component: {fileID: 5696440211409953131}
+  - component: {fileID: 428900206006496091}
+  - component: {fileID: 3218701527302989036}
+  - component: {fileID: 1665422379}
   m_Layer: 0
   m_Name: declencheurFinNiveau
-  m_TagString: Untagged
+  m_TagString: fin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6439516680413306023
+--- !u!4 &6059819982877134660
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6439516680413306024}
+  m_GameObject: {fileID: 6059819982877134667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.0407, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6439516680413306022
+--- !u!33 &6059819982877134661
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6439516680413306024}
+  m_GameObject: {fileID: 6059819982877134667}
   m_Mesh: {fileID: 4300000, guid: cba4b234440c48f4da95dbd0734b2cf7, type: 2}
---- !u!23 &6439516680413306025
+--- !u!23 &6059819982877134666
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6439516680413306024}
+  m_GameObject: {fileID: 6059819982877134667}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,29 +83,65 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2541001685570065960
+--- !u!65 &5696440211409953131
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6439516680413306024}
+  m_GameObject: {fileID: 6059819982877134667}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.15903622, y: 0.12510002, z: 0.120000005}
-  m_Center: {x: 0.019518107, y: 0.06255001, z: 0}
---- !u!114 &2425248438699911865
+  m_Size: {x: 0.7835581, y: 0.036479853, z: 0.70529485}
+  m_Center: {x: -0.03235826, y: 0.018239927, z: 0.08182442}
+--- !u!114 &428900206006496091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6439516680413306024}
+  m_GameObject: {fileID: 6059819982877134667}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b0b8f506be2da674b33ea064eec0f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   menuNiveauTerminer: {fileID: 0}
+  "controlleurR\xE9soltuion": {fileID: 0}
+  "textR\xE9sultat": {fileID: 0}
+  nombreDeCoupJoueur: {fileID: 0}
+  nombreDeCoupMinimum: {fileID: 0}
+  UIgameplay: {fileID: 0}
+--- !u!65 &3218701527302989036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059819982877134667}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9079008, y: 0.116978765, z: 0.87043}
+  m_Center: {x: 0.06299305, y: 0.058489382, z: 0.036989212}
+--- !u!114 &1665422379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059819982877134667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0b8f506be2da674b33ea064eec0f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuNiveauTerminer: {fileID: 0}
+  "controlleurR\xE9soltuion": {fileID: 0}
+  "textR\xE9sultat": {fileID: 0}
+  nombreDeCoupJoueur: {fileID: 0}
+  nombreDeCoupMinimum: {fileID: 0}
+  UIgameplay: {fileID: 0}

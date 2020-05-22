@@ -6,19 +6,16 @@ using UnityEngine;
 public class PersonnageController : MonoBehaviour
 {
 
-    [SerializeField] private float uniteDeplacement = 1f;
-    [SerializeField] private float hauteurSaut = 4.5f;
-    [SerializeField] private float uniteDeplacementSaut = 1.30f;
+    [SerializeField] private float uniteDeplacement;
+    [SerializeField] private float hauteurSaut;
+    [SerializeField] private float uniteDeplacementSaut;
     [SerializeField] private Animator animateur;
-
-    [SerializeField] private GameObject UIgameplay;
-    [SerializeField] private GameObject textPerdu;
-
     [SerializeField] private SceneCtrl sceneCtrl;
 
-    private float rotation;
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
+
+    private static int nombreDeCoup;
 
     private Vector3 positionDebutNiveau;
     private float positionDebutNiveauRotation;
@@ -28,20 +25,21 @@ public class PersonnageController : MonoBehaviour
     private Rigidbody rigidbody;
     private BoxCollider boxCollider;
 
-    bool enMouvement = false;
+    private bool enMouvement = false;
     private static bool go = false;
-    bool marche = false;
-    bool saute = false;
+    private bool marche = false;
+    private bool saute = false;
     private static bool restart = false;
 
     private static List<string> sequence;
     private static List<string> procedure;
 
-    float timeLeft = 2.0f;
+    private float timeLeft = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        nombreDeCoup = 0;
         sequence = new List<string>();
         procedure = new List<string>();
         rigidbody = GetComponent<Rigidbody>();
@@ -55,7 +53,7 @@ public class PersonnageController : MonoBehaviour
 
     void Update()
     {
-        
+
         if(restart == true){
             transform.position = positionDebutNiveau;
             transform.rotation = Quaternion.Euler(0, positionDebutNiveauRotation, 0);
@@ -106,27 +104,7 @@ public class PersonnageController : MonoBehaviour
         // Fonction timer
         timeLeft -= Time.deltaTime;
         if(timeLeft < 0)
-            enMouvement = false; 
-
-        //Gestion du déplacement vers l'avant
-        if(Input.GetKeyDown(KeyCode.W)){
-            destination = transform.position + (transform.forward);
-            marche = true;
-        }else if(Input.GetKeyDown(KeyCode.X)){
-            animateur.SetBool("saute", true);
-            animateur.SetBool("estAuSol", false);
-            rigidbody.AddForce(Vector3.up * hauteurSaut, ForceMode.Impulse);
-            rigidbody.AddForce(transform.forward * uniteDeplacementSaut, ForceMode.Impulse);
-
-        }else if(Input.GetKeyDown(KeyCode.A))
-            transform.Rotate(Vector3.up, rotationGauche);
-        else if(Input.GetKeyDown(KeyCode.D))
-            transform.Rotate(Vector3.up, rotationDroite);
-
-        if (marche){
-            animateur.SetBool("marche", true);
-            transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
-        }
+            enMouvement = false;
 
     }
 
@@ -141,8 +119,7 @@ public class PersonnageController : MonoBehaviour
             sequence = new List<string>();
         }
         if(collision.gameObject.tag == "fin"){
-            sceneCtrl.chargerScene("DevFinNiveau");
-            sceneCtrl.AugmenterNiveau();
+            collision.gameObject.GetComponent<FinNiveauCtrl>().lancer(nombreDeCoup);
         }
     }
 
@@ -154,7 +131,9 @@ public class PersonnageController : MonoBehaviour
         sequence = sequenceMouvement;
         procedure = procedureMouvement;
         go =true;
+        nombreDeCoup = sequence.Count;
     }
+
 
     public static void Restart(){
         restart = true;
@@ -171,4 +150,15 @@ public class PersonnageController : MonoBehaviour
         transform.Rotate(Vector3.up, rotation);
     }
 
+    private List<String> copyList (List<String> listeOriginale){
+        List<String> listeDestination = new List<string>();
+        foreach(String valeur in listeOriginale){
+            listeDestination.Add(valeur);
+        }
+        return listeDestination;
+    }
+
+    public int getNombreDeCoup() {
+        return nombreDeCoup;
+    }
 }
