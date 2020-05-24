@@ -9,18 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Accueil.unity
     guid: b93402f1007c3a936be81a05b4bbcde9
   - enabled: 1
+    path: Assets/Scenes/AccueilInterNiveau.unity
+    guid: 7feb26c069fed0cd3965ff3f2370e238
+  - enabled: 1
     path: Assets/Scenes/Niveau1.unity
     guid: 1309f89b4259525e99291178eadf502d
   - enabled: 1
     path: Assets/Scenes/Niveau2.unity
     guid: 1e814d5690c9460c6ace27a53cab86f5
   - enabled: 1
+    path: Assets/Scenes/Niveau3.unity
+    guid: 24f8b5e9fe22fb347a727e4b8c5f6179
+  - enabled: 1
+    path: Assets/Scenes/Niveau4.unity
+    guid: 061175bd2022173b98328a3cca41df6e
+  - enabled: 1
     path: Assets/Scenes/DevFinNiveau.unity
     guid: 52b370df69d4219f5b6a2c5b2a3d5e01
   - enabled: 1
     path: Assets/Scenes/ScenePerdu.unity
     guid: 5bba8addf76015186b59a3a4accc1526
-  - enabled: 1
-    path: Assets/Scenes/Scene1.unity
+  - enabled: 0
+    path: "Assets/Scenes/DevR\xE9solutionAutomatique.unity"
     guid: d1d90ba23591b2beb9a2a0c6aa2e2cc3
   m_configObjects: {}

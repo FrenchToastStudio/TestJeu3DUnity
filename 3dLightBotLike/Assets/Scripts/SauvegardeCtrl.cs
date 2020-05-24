@@ -9,7 +9,13 @@ public class SauvegardeCtrl : MonoBehaviour
     private void Start()
     {
         sauvegarde = GestionaireSauvegardes.Charger();
+
+        Debug.Log(sauvegarde.position);
+
+
     }
+
+
 
 
     public void débloquéNiveau() {

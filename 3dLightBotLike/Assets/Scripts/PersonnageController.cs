@@ -11,6 +11,8 @@ public class PersonnageController : MonoBehaviour
     [SerializeField] private float uniteDeplacementSaut;
     [SerializeField] private Animator animateur;
     [SerializeField] private SceneCtrl sceneCtrl;
+    [SerializeField] private ResolutionCtrl resolutionCtrl;
+
 
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
@@ -137,6 +139,7 @@ public class PersonnageController : MonoBehaviour
         procedure = procedureMouvement;
         go =true;
         nombreDeCoup = sequence.Count;
+        Debug.Log(ResolutionCtrl.getNbrCoupMaximum());
     }
 
 

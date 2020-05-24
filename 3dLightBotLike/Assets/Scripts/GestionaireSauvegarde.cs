@@ -30,8 +30,10 @@ public class GestionaireSauvegardes {
     public static Sauvegarde Charger(){
 		Sauvegarde sauvegarde;
 		if(System.IO.File.Exists("sauvegarde.json")){
+			Debug.Log("sauvegarde existe");
 			sauvegarde = Charger("sauvegarde.json");
 		} else {
+			Debug.Log("sauvegarde n'existe pas");
 			sauvegarde = new Sauvegarde(new List<int>(){0},new List<int>(){0}, 0);
 		}
 
