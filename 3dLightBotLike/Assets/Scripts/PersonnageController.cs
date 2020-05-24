@@ -101,6 +101,11 @@ public class PersonnageController : MonoBehaviour
             }
         }
 
+        if (marche){
+            animateur.SetBool("marche", true);
+            transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
+        }
+
         // Fonction timer
         timeLeft -= Time.deltaTime;
         if(timeLeft < 0)
