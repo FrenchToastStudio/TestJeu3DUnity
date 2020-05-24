@@ -11,6 +11,7 @@ TagManager:
   - btnSequence
   - UIgameplay
   - personnagePrincipale
+  - casesParcours
   layers:
   - Default
   - TransparentFX
