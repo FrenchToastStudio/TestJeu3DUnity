@@ -22,6 +22,7 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject btnMouvementGo;
     [SerializeField] private GameObject txtgo;
     [SerializeField] private GameObject txtErreur;
+    [SerializeField] private GameObject txtCoup;
     
 
     [SerializeField] private GameObject btnRestart;
@@ -45,10 +46,11 @@ public class UiController : MonoBehaviour
     void Update(){
 
         if(modificationAffichage){
+
             foreach (GameObject btnSequence in GameObject.FindGameObjectsWithTag("btnSequence")){
                 // Nettoie l'affichage de la sequence
                 Destroy(btnSequence);
-                
+                txtCoup.SetActive(false);
             }
             
             // Parcours le tableau de sequence pour mettre à jour l'affichage
@@ -140,8 +142,11 @@ public class UiController : MonoBehaviour
     }
 
     public void LancerSequence(){
+        Debug.Log(ResolutionCtrl.getNbrCoupMaximum());
         if(sequence.Count == 0){
             txtErreur.SetActive(true);
+        } else if(sequence.Count > ResolutionCtrl.getNbrCoupMaximum()){
+            txtCoup.SetActive(true);
         } else {
             listeDestination = copyList(sequence);
             PersonnageController.SetSequenceComplete(sequence, procedure);
@@ -164,8 +169,10 @@ public class UiController : MonoBehaviour
     }
 
     public void restart (){
-        sequence = new List<string>();
-        modificationAffichage = true;
+        //sequence = new List<string>();
+        //modificationAffichage = true;
+        sequence = listeDestination;
+        PersonnageController.SetSequenceComplete(sequence, procedure);
         txtgo.SetActive(true);
         PersonnageController.Restart();
     }
@@ -176,6 +183,12 @@ public class UiController : MonoBehaviour
         else
             procedure.RemoveAt(position);
         modificationAffichage = true;
+    }
+
+    public static void reset(){
+        sequence = new List<string>();
+        procedure = new List<string>();
+        PersonnageController.reset();
     }
 
 }

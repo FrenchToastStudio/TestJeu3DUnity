@@ -151,6 +151,7 @@ Transform:
   - {fileID: 1730664012}
   - {fileID: 893067272}
   - {fileID: 1956431765}
+  - {fileID: 1050150571}
   - {fileID: 723816127}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -302,6 +303,16 @@ PrefabInstance:
       propertyPath: UIgameplay
       value: 
       objectReference: {fileID: 723816126}
+    - target: {fileID: 428900206006496091, guid: 4c58d64d6745f40feb1cc1075b84cca3,
+        type: 3}
+      propertyPath: sauvegardeCtrl
+      value: 
+      objectReference: {fileID: 1050150572}
+    - target: {fileID: 428900206006496091, guid: 4c58d64d6745f40feb1cc1075b84cca3,
+        type: 3}
+      propertyPath: SceneCtrl
+      value: 
+      objectReference: {fileID: 818123462}
     - target: {fileID: 3218701527302989036, guid: 4c58d64d6745f40feb1cc1075b84cca3,
         type: 3}
       propertyPath: m_IsTrigger
@@ -394,6 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5696440211409953131, guid: 4c58d64d6745f40feb1cc1075b84cca3, type: 3}
+    - {fileID: 1665422379, guid: 4c58d64d6745f40feb1cc1075b84cca3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4c58d64d6745f40feb1cc1075b84cca3, type: 3}
 --- !u!1 &153800678 stripped
 GameObject:
@@ -408,6 +420,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 39171019}
     m_Modifications:
+    - target: {fileID: 168794263338887213, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 215523636828207471, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: uiController
@@ -596,7 +613,7 @@ PrefabInstance:
     - target: {fileID: 4045028111685111318, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4045028111685111318, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
@@ -816,25 +833,41 @@ PrefabInstance:
     - target: {fileID: 4766474901311406762, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5188998690922867832, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: uiController
       value: 
       objectReference: {fileID: 893067271}
+    - target: {fileID: 6713682816917047221, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8411386778988044353, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: uiController
       value: 
       objectReference: {fileID: 893067271}
+    - target: {fileID: 8465615536901565422, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 9088541858314826628, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0613b9ed2b317df95b13aa2b58cbf970, type: 3}
+--- !u!1 &302540062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6713682816917047221, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+    type: 3}
+  m_PrefabInstance: {fileID: 210387452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &397574764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4090742931207612, guid: 14e4e479b0ada4d49bfe66d6f080bb7c,
@@ -1524,6 +1557,7 @@ MonoBehaviour:
   btnMouvementGo: {fileID: 1984840291}
   txtgo: {fileID: 1161778188}
   txtErreur: {fileID: 488882587}
+  txtCoup: {fileID: 302540062}
   btnRestart: {fileID: 153800678}
   spriteAvance: {fileID: 21300000, guid: 0087dbf3e59312e2f886d6658bcc5818, type: 3}
   spriteGauche: {fileID: 21300000, guid: 5c8f77cba31e85f9aba0ac072a9b6e0e, type: 3}
@@ -1711,6 +1745,49 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2c0bb951fb8a2e44a9fb35bc4af3d739, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14e4e479b0ada4d49bfe66d6f080bb7c, type: 3}
+--- !u!1 &1050150570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1050150571}
+  - component: {fileID: 1050150572}
+  m_Layer: 0
+  m_Name: ControleurSauvegarde
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1050150571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050150570}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 86.85456, y: 196.65585, z: -168.39026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 39171019}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1050150572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050150570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cea925b7b5a7f249f520700b677abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1130346254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2356,6 +2433,11 @@ PrefabInstance:
       propertyPath: UIgameplay
       value: 
       objectReference: {fileID: 723816126}
+    - target: {fileID: 6981744453957295984, guid: 5be525e4bb74f20458dd05e68aa32e72,
+        type: 3}
+      propertyPath: UiController
+      value: 
+      objectReference: {fileID: 893067271}
     - target: {fileID: 6981744453957295985, guid: 5be525e4bb74f20458dd05e68aa32e72,
         type: 3}
       propertyPath: m_Name

@@ -9,25 +9,19 @@ using UnityEngine.UI;
 
 public class FinNiveauCtrl : MonoBehaviour
 {
-    [SerializeField] GameObject menuNiveauTerminer;
-    [SerializeField] GameObject controlleurRésoltuion;
-    [SerializeField] GameObject textRésultat;
-    [SerializeField] GameObject nombreDeCoupJoueur;
-    [SerializeField] GameObject nombreDeCoupMinimum;
-    [SerializeField] GameObject UIgameplay;
-    [SerializeField] GameObject sauvegardeCtrl;
-
-
-    private int niveauReussi;
-
-    private void Start() {
-        if(niveauReussi == null) {
-            niveauReussi = 0;
-        }
+    [SerializeField] SauvegardeCtrl sauvegardeCtrl;
+    [SerializeField] SceneCtrl SceneCtrl;
+    
+    void OnCollisionEnter(Collision collision){
+        Time.timeScale = 0;
+        sauvegardeCtrl.GetComponent<SauvegardeCtrl>().débloquéNiveau();
+        SceneCtrl.GetComponent<SceneCtrl>().chargerScene("AccueilInterNiveau");
     }
 
-    public void lancer(int nombreDeCoup) {
-        UIgameplay.SetActive(false);
+
+
+    // public void lancer(int nombreDeCoup) {
+    //     UIgameplay.SetActive(false);
 
 
         // if(nombreDeCoup <= controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum()){
@@ -42,6 +36,6 @@ public class FinNiveauCtrl : MonoBehaviour
 
         // menuNiveauTerminer.SetActive(true);
         // Time.timeScale = 0;
-    }
+    // }
 
 }

@@ -34,7 +34,7 @@ public class GestionaireSauvegardes {
 			sauvegarde = Charger("sauvegarde.json");
 		} else {
 			Debug.Log("sauvegarde n'existe pas");
-			sauvegarde = new Sauvegarde(new List<int>(){0},new List<int>(){0}, 0);
+			sauvegarde = new Sauvegarde(new List<int>(){0},new List<int>(){1}, 1);
 		}
 
 		return sauvegarde;

@@ -12,6 +12,7 @@ TagManager:
   - UIgameplay
   - personnagePrincipale
   - casesParcours
+  - btnNiveau
   layers:
   - Default
   - TransparentFX

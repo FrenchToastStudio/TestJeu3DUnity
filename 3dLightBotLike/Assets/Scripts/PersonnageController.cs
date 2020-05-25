@@ -13,7 +13,6 @@ public class PersonnageController : MonoBehaviour
     [SerializeField] private SceneCtrl sceneCtrl;
     [SerializeField] private ResolutionCtrl resolutionCtrl;
 
-
     private float rotationGauche = -90.0f;
     private float rotationDroite = 90.0f;
 
@@ -32,6 +31,7 @@ public class PersonnageController : MonoBehaviour
     private bool marche = false;
     private bool saute = false;
     private static bool restart = false;
+    private static bool estReset = false;
 
     private static List<string> sequence;
     private static List<string> procedure;
@@ -50,16 +50,23 @@ public class PersonnageController : MonoBehaviour
         positionDebutNiveau = transform.position;
         positionDebutNiveauRotation = transform.rotation.eulerAngles.y;
         destination = transform.position + (transform.forward);
-
     }
 
     void Update()
     {
-
         if(restart == true){
             transform.position = positionDebutNiveau;
             transform.rotation = Quaternion.Euler(0, positionDebutNiveauRotation, 0);
             restart = false;
+        }
+
+        if(estReset == true){
+            Debug.Log("Start position re initialisé");
+            // Pour initialiser un restart
+            positionDebutNiveau = transform.position;
+            positionDebutNiveauRotation = transform.rotation.eulerAngles.y;
+            destination = transform.position + (transform.forward);
+            estReset = false;
         }
 
         if(rigidbody.velocity.y < 0){
@@ -72,9 +79,11 @@ public class PersonnageController : MonoBehaviour
         }
 
         if(!enMouvement && sequence.Count > 0 && go){
+            
             positionDepart = transform.position;
             enMouvement = true;
             string mouvement = sequence[0];
+            
             sequence.RemoveAt(0);
             switch(mouvement){
                 case "Avance":
@@ -105,7 +114,7 @@ public class PersonnageController : MonoBehaviour
 
         if (marche){
             animateur.SetBool("marche", true);
-            transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(transform.position, destination, 1f * Time.deltaTime);
         }
 
         // Fonction timer
@@ -122,11 +131,6 @@ public class PersonnageController : MonoBehaviour
         }
         if(collision.gameObject.tag == "sol"){
             sceneCtrl.perdu();
-            restart = true;
-            sequence = new List<string>();
-        }
-        if(collision.gameObject.tag == "fin"){
-            collision.gameObject.GetComponent<FinNiveauCtrl>().lancer(nombreDeCoup);
         }
     }
 
@@ -137,14 +141,14 @@ public class PersonnageController : MonoBehaviour
     public static void SetSequenceComplete(List<string> sequenceMouvement, List<string> procedureMouvement){
         sequence = sequenceMouvement;
         procedure = procedureMouvement;
-        go =true;
-        nombreDeCoup = sequence.Count;
-        Debug.Log(ResolutionCtrl.getNbrCoupMaximum());
+
+        go = true;
     }
 
 
     public static void Restart(){
         restart = true;
+        go = false;
     }
 
     private void saut(){
@@ -168,5 +172,13 @@ public class PersonnageController : MonoBehaviour
 
     public int getNombreDeCoup() {
         return nombreDeCoup;
+    }
+
+    public static void reset(){
+        Time.timeScale = 1;
+        sequence = new List<string>();
+        procedure = new List<string>();
+        go = false;
+        estReset = true;
     }
 }
