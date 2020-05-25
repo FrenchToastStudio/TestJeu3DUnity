@@ -759,7 +759,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &217245393
 GameObject:
@@ -2820,10 +2820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51878fd4728e011aa7dff05ee7d691f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadSceneBtn: {fileID: 0}
   UIgameplay: {fileID: 373949231}
-  textPerdu: {fileID: 6142495949440293281, guid: 825061afcd5f40b578fb2239291bea9b,
-    type: 3}
 --- !u!4 &1575346250
 Transform:
   m_ObjectHideFlags: 0
@@ -3047,7 +3044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIgameplay: {fileID: 373949231}
-  layout: {fileID: 116256737}
+  layoutSequence: {fileID: 0}
+  layoutProcedure: {fileID: 0}
   btnMouvementAvance: {fileID: 1217055154468280970, guid: 2d2fbdab5c0eaf21b8568dbb01669954,
     type: 3}
   btnMouvementSaut: {fileID: 6103895128837859031, guid: 0660083b3201ce082a27c08161c6e5b0,
@@ -3064,6 +3062,7 @@ MonoBehaviour:
   spriteGauche: {fileID: 21300000, guid: 5c8f77cba31e85f9aba0ac072a9b6e0e, type: 3}
   spriteDroite: {fileID: 21300000, guid: 5b78963dbf21276a8be1f5f512dd7c67, type: 3}
   spriteSaute: {fileID: 21300000, guid: 24f982b050de5ed5a90bdd1dcd0a1bc7, type: 3}
+  spriteProcedure: {fileID: 0}
 --- !u!4 &1999661239
 Transform:
   m_ObjectHideFlags: 0
