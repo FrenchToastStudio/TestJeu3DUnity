@@ -17,25 +17,4 @@ public class FinNiveauCtrl : MonoBehaviour
         sauvegardeCtrl.GetComponent<SauvegardeCtrl>().débloquéNiveau();
         SceneCtrl.GetComponent<SceneCtrl>().chargerScene("AccueilInterNiveau");
     }
-
-
-
-    // public void lancer(int nombreDeCoup) {
-    //     UIgameplay.SetActive(false);
-
-
-        // if(nombreDeCoup <= controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum()){
-        //     textRésultat.GetComponent<Text>().text = "Vous avez Réeussi...";
-        //     sauvegardeCtrl.GetComponent<SauvegardeCtrl>().débloquéNiveau();
-        // } else {
-        //     textRésultat.GetComponent<Text>().text = "Vous avez perdu...";
-        // }
-
-        // nombreDeCoupJoueur.GetComponent<Text>().text = "Votre nombre de coup: " + nombreDeCoup;
-        // nombreDeCoupMinimum.GetComponent<Text>().text = "Nombre de coup minimum: " + controlleurRésoltuion.GetComponent<RésolutionCtrl>().getCoupMinimum();
-
-        // menuNiveauTerminer.SetActive(true);
-        // Time.timeScale = 0;
-    // }
-
 }

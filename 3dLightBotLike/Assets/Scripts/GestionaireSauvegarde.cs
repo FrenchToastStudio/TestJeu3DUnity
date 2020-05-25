@@ -4,12 +4,10 @@ using UnityEngine;
 using System.IO;
 
 public class Sauvegarde {
-    public List<int> niveau;
     public List<int> débloqué;
     public int position;
 
-    public Sauvegarde (List<int> unNomNiveau, List<int> unDébloqué, int unePosition) {
-        niveau = unNomNiveau;
+    public Sauvegarde (List<int> unDébloqué, int unePosition) {
         débloqué = unDébloqué;
         position = unePosition;
     }
@@ -30,11 +28,10 @@ public class GestionaireSauvegardes {
     public static Sauvegarde Charger(){
 		Sauvegarde sauvegarde;
 		if(System.IO.File.Exists("sauvegarde.json")){
-			Debug.Log("sauvegarde existe");
 			sauvegarde = Charger("sauvegarde.json");
 		} else {
-			Debug.Log("sauvegarde n'existe pas");
-			sauvegarde = new Sauvegarde(new List<int>(){0},new List<int>(){1}, 1);
+			// initialisation de la premiere entrée pour déblocage du niveau 1
+			sauvegarde = new Sauvegarde(new List<int>(){1}, 1);
 		}
 
 		return sauvegarde;

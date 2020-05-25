@@ -74,11 +74,6 @@ public class dragBtn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
                 uiController.setMouvementGauche(layoutDestination);
             }
         }
-        
-        
-        else {
-            Debug.Log("end outside");
-        }
     }
 
 }

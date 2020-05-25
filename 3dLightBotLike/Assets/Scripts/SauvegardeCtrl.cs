@@ -6,8 +6,7 @@ public class SauvegardeCtrl : MonoBehaviour
 {
     Sauvegarde sauvegarde;
 
-    private void Start()
-    {
+    private void Start(){
         sauvegarde = GestionaireSauvegardes.Charger();
     }
 
