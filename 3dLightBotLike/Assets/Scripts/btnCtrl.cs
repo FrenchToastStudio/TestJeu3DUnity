@@ -8,7 +8,7 @@ public class btnCtrl : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData e){
 
-        UiController.ActionToDelete(Int32.Parse(name));
+        UiController.ActionToDelete(Int32.Parse(name), this.gameObject.transform.parent.name);
 
     }
     
