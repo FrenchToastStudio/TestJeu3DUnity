@@ -313,6 +313,12 @@ PrefabInstance:
       propertyPath: UIgameplay
       value: 
       objectReference: {fileID: 723816126}
+    - target: {fileID: 428900206006496091, guid: 4c58d64d6745f40feb1cc1075b84cca3,
+        type: 3}
+      propertyPath: sauvegardeCtrl
+      value: 
+      objectReference: {fileID: 7165998599007028504, guid: adb7c19ac3afd7698b8c0ee384864082,
+        type: 3}
     - target: {fileID: 3218701527302989036, guid: 4c58d64d6745f40feb1cc1075b84cca3,
         type: 3}
       propertyPath: m_IsTrigger
@@ -405,6 +411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5696440211409953131, guid: 4c58d64d6745f40feb1cc1075b84cca3, type: 3}
+    - {fileID: 1665422379, guid: 4c58d64d6745f40feb1cc1075b84cca3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4c58d64d6745f40feb1cc1075b84cca3, type: 3}
 --- !u!1 &153800678 stripped
 GameObject:
