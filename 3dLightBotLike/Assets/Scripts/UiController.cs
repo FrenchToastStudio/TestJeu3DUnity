@@ -23,7 +23,8 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject txtgo;
     [SerializeField] private GameObject txtErreur;
     [SerializeField] private GameObject txtCoup;
-    
+    [SerializeField] private GameObject txtResumeCoup;
+    [SerializeField] private GameObject TextNbrCoupMaxValeur;
 
     [SerializeField] private GameObject btnRestart;
     [SerializeField] private Sprite spriteAvance;
@@ -147,6 +148,8 @@ public class UiController : MonoBehaviour
             txtErreur.SetActive(true);
         } else if(sequence.Count > ResolutionCtrl.getNbrCoupMaximum()){
             txtCoup.SetActive(true);
+            TextNbrCoupMaxValeur.GetComponent<Text>().text = ResolutionCtrl.getNbrCoupMaximum().ToString();
+            txtResumeCoup.SetActive(true);
         } else {
             listeDestination = copyList(sequence);
             PersonnageController.SetSequenceComplete(sequence, procedure);
