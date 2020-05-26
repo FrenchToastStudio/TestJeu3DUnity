@@ -14908,6 +14908,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1746285276033414775, guid: adb7c19ac3afd7698b8c0ee384864082,
+        type: 3}
+      propertyPath: listeBoutonNiveau.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1746285276033414775, guid: adb7c19ac3afd7698b8c0ee384864082,
+        type: 3}
+      propertyPath: listeBoutonNiveau.Array.data[0]
+      value: 
+      objectReference: {fileID: 503382846}
+    - target: {fileID: 1746285276033414775, guid: adb7c19ac3afd7698b8c0ee384864082,
+        type: 3}
+      propertyPath: listeBoutonNiveau.Array.data[1]
+      value: 
+      objectReference: {fileID: 1701119874}
+    - target: {fileID: 1746285276033414775, guid: adb7c19ac3afd7698b8c0ee384864082,
+        type: 3}
+      propertyPath: listeBoutonNiveau.Array.data[2]
+      value: 
+      objectReference: {fileID: 1008238461}
+    - target: {fileID: 1746285276033414775, guid: adb7c19ac3afd7698b8c0ee384864082,
+        type: 3}
+      propertyPath: listeBoutonNiveau.Array.data[3]
+      value: 
+      objectReference: {fileID: 1017157174}
     - target: {fileID: 7165998599007028504, guid: adb7c19ac3afd7698b8c0ee384864082,
         type: 3}
       propertyPath: m_Name
