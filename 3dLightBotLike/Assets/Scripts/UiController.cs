@@ -24,8 +24,9 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject txtErreur;
     [SerializeField] private GameObject txtCoup;
     [SerializeField] private GameObject txtResumeCoup;
-    [SerializeField] private GameObject TextNbrCoupMaxValeur;
-    [SerializeField] private GameObject TextRecordValeur;
+    [SerializeField] private GameObject textNbrCoupMaxValeur;
+    [SerializeField] private GameObject textRecord;
+    [SerializeField] private GameObject textRecordValeur;
 
     [SerializeField] SauvegardeCtrl sauvegardeCtrl;
 
@@ -46,11 +47,11 @@ public class UiController : MonoBehaviour
         sequence = new List<string>();
         procedure = new List<string>();
 
-        if (sauvegardeCtrl.getMeilleurScore() > 1)
-            TextRecordValeur.GetComponent<Text>().text = sauvegardeCtrl.getMeilleurScore().ToString();
-        else
-            TextRecordValeur.GetComponent<Text>().text = ResolutionCtrl.getNbrCoupMaximum().ToString();
-
+        if (sauvegardeCtrl.getMeilleurScore() > 1){
+            textRecord.SetActive(true);
+            textRecordValeur.GetComponent<Text>().text = sauvegardeCtrl.getMeilleurScore().ToString();
+        }
+            
     }
     
     void Update(){
@@ -157,7 +158,7 @@ public class UiController : MonoBehaviour
             txtErreur.SetActive(true);
         } else if(sequence.Count > ResolutionCtrl.getNbrCoupMaximum()){
             txtCoup.SetActive(true);
-            TextNbrCoupMaxValeur.GetComponent<Text>().text = ResolutionCtrl.getNbrCoupMaximum().ToString();
+            textNbrCoupMaxValeur.GetComponent<Text>().text = ResolutionCtrl.getNbrCoupMaximum().ToString();
             txtResumeCoup.SetActive(true);
         } else {
             listeDestination = copyList(sequence);

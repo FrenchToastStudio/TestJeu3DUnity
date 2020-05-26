@@ -14,10 +14,9 @@ public class SauvegardeCtrl : MonoBehaviour
     public void débloquéNiveau(int score) {
         if(sauvegarde.débloqué[sauvegarde.position] == 1 || sauvegarde.débloqué[sauvegarde.position] > score)
             sauvegarde.débloqué[sauvegarde.position] = score;
-        if(sauvegarde.débloqué[sauvegarde.position + 1] == null)
-            sauvegarde.débloqué.Add(1);
-        else
-            sauvegarde.débloqué[sauvegarde.position + 1] = 1;
+        
+        sauvegarde.débloqué.Add(0);
+        sauvegarde.débloqué[sauvegarde.position + 1] = 1;
         GestionaireSauvegardes.Sauvegarder(sauvegarde);
     }
 

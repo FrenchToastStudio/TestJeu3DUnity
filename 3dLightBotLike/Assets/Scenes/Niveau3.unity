@@ -8492,6 +8492,21 @@ PrefabInstance:
       propertyPath: sauvegardeCtrl
       value: 
       objectReference: {fileID: 1021696679}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: textNbrCoupMaxValeur
+      value: 
+      objectReference: {fileID: 1340097714}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: textRecord
+      value: 
+      objectReference: {fileID: 1340097716}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: textRecordValeur
+      value: 
+      objectReference: {fileID: 1340097713}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4cfb2009910f0b9fa02754340a95951, type: 3}
 --- !u!4 &1325831101 stripped
@@ -8517,6 +8532,11 @@ PrefabInstance:
       propertyPath: uiController
       value: 
       objectReference: {fileID: 2026269134}
+    - target: {fileID: 4022000859750186962, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4045028110555473852, guid: 0613b9ed2b317df95b13aa2b58cbf970,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -8851,6 +8871,12 @@ GameObject:
 --- !u!1 &1340097715 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4010431985450809479, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+    type: 3}
+  m_PrefabInstance: {fileID: 1340097710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1340097716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4022000859750186962, guid: 0613b9ed2b317df95b13aa2b58cbf970,
     type: 3}
   m_PrefabInstance: {fileID: 1340097710}
   m_PrefabAsset: {fileID: 0}

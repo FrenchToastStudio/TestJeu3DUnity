@@ -141,7 +141,6 @@ public class PersonnageController : MonoBehaviour
     public static void SetSequenceComplete(List<string> sequenceMouvement, List<string> procedureMouvement){
         sequence = sequenceMouvement;
         procedure = procedureMouvement;
-
         go = true;
     }
 
