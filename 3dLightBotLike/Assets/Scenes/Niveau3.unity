@@ -8472,6 +8472,26 @@ PrefabInstance:
       propertyPath: txtCoup
       value: 
       objectReference: {fileID: 1340097712}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: txtResumeCoup
+      value: 
+      objectReference: {fileID: 1340097715}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: TextNbrCoupMaxValeur
+      value: 
+      objectReference: {fileID: 1340097714}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: TextRecordValeur
+      value: 
+      objectReference: {fileID: 1340097713}
+    - target: {fileID: 8878541095650942419, guid: f4cfb2009910f0b9fa02754340a95951,
+        type: 3}
+      propertyPath: sauvegardeCtrl
+      value: 
+      objectReference: {fileID: 1021696679}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4cfb2009910f0b9fa02754340a95951, type: 3}
 --- !u!4 &1325831101 stripped
@@ -8813,6 +8833,24 @@ RectTransform:
 --- !u!1 &1340097712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6713682816917047221, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+    type: 3}
+  m_PrefabInstance: {fileID: 1340097710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1340097713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1999637200938250289, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+    type: 3}
+  m_PrefabInstance: {fileID: 1340097710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1340097714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4427689680829663305, guid: 0613b9ed2b317df95b13aa2b58cbf970,
+    type: 3}
+  m_PrefabInstance: {fileID: 1340097710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1340097715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4010431985450809479, guid: 0613b9ed2b317df95b13aa2b58cbf970,
     type: 3}
   m_PrefabInstance: {fileID: 1340097710}
   m_PrefabAsset: {fileID: 0}

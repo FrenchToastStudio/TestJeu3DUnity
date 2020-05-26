@@ -25,6 +25,9 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject txtCoup;
     [SerializeField] private GameObject txtResumeCoup;
     [SerializeField] private GameObject TextNbrCoupMaxValeur;
+    [SerializeField] private GameObject TextRecordValeur;
+
+    [SerializeField] SauvegardeCtrl sauvegardeCtrl;
 
     [SerializeField] private GameObject btnRestart;
     [SerializeField] private Sprite spriteAvance;
@@ -42,6 +45,12 @@ public class UiController : MonoBehaviour
     void Start(){
         sequence = new List<string>();
         procedure = new List<string>();
+
+        if (sauvegardeCtrl.getMeilleurScore() > 1)
+            TextRecordValeur.GetComponent<Text>().text = sauvegardeCtrl.getMeilleurScore().ToString();
+        else
+            TextRecordValeur.GetComponent<Text>().text = ResolutionCtrl.getNbrCoupMaximum().ToString();
+
     }
     
     void Update(){
@@ -153,6 +162,7 @@ public class UiController : MonoBehaviour
         } else {
             listeDestination = copyList(sequence);
             PersonnageController.SetSequenceComplete(sequence, procedure);
+            FinNiveauCtrl.setNbrCoupUtilisé(sequence.Count);
             txtgo.SetActive(false);
         }
     }
