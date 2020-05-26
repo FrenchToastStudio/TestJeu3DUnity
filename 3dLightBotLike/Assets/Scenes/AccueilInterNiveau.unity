@@ -7020,6 +7020,17 @@ MonoBehaviour:
           m_StringArgument: Niveau3
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2006896293}
+        m_MethodName: changerNiveau
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1008238464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7147,6 +7158,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Niveau4
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2006896293}
+        m_MethodName: changerNiveau
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1017157177
@@ -12910,6 +12932,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Niveau2
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2006896293}
+        m_MethodName: changerNiveau
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1701119877
