@@ -47,4 +47,9 @@ public class GestionaireSauvegardes {
 		}
 	}
 
+	public static void initialiserSauvegarde(){
+		Sauvegarde sauvegarde = new Sauvegarde(new List<int>(){1}, 1);
+		Sauvegarder(sauvegarde);
+	}
+
 }
