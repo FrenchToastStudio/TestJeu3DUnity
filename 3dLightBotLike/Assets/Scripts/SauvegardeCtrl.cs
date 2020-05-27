@@ -28,7 +28,7 @@ public class SauvegardeCtrl : MonoBehaviour
         Debug.Log(sauvegarde.position);
         Debug.Log("positon: " + sauvegarde.position);
         Debug.Log("niveau débloqué!: "+ sauvegarde.débloqué[sauvegarde.position]);
-        sauvegarde.débloqué[sauvegarde.position + 1] = 0;
+        sauvegarde.débloqué[sauvegarde.position + 1] = 1;
         GestionaireSauvegardes.Sauvegarder(sauvegarde);
     }
 
