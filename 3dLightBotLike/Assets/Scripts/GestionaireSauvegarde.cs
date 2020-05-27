@@ -14,6 +14,13 @@ public class Sauvegarde {
         position = unePosition;
     }
 
+    public void ajoutDéblqoué() {
+        if(this.débloqué[this.position + 1] == null) {
+            this.débloqué.Add(1);
+        }
+
+    }
+
 }
 
 public class GestionaireSauvegardes {

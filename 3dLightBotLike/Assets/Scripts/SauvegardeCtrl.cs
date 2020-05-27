@@ -25,7 +25,7 @@ public class SauvegardeCtrl : MonoBehaviour
 
 
     public void débloquéNiveau() {
-        sauvegarde.débloqué[sauvegarde.position].Add(1);
+        sauvegarde.ajoutDéblqoué();
         GestionaireSauvegardes.Sauvegarder(sauvegarde);
     }
 
