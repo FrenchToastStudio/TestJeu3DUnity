@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 428900206006496091}
   - component: {fileID: 3218701527302989036}
   - component: {fileID: 1665422379}
+  - component: {fileID: 5464326134772620055}
   m_Layer: 0
   m_Name: declencheurFinNiveau
   m_TagString: fin
@@ -108,12 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0b8f506be2da674b33ea064eec0f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuNiveauTerminer: {fileID: 0}
-  "controlleurR\xE9soltuion": {fileID: 0}
-  "textR\xE9sultat": {fileID: 0}
-  nombreDeCoupJoueur: {fileID: 0}
-  nombreDeCoupMinimum: {fileID: 0}
-  UIgameplay: {fileID: 0}
+  sauvegardeCtrl: {fileID: 0}
+  SceneCtrl: {fileID: 0}
 --- !u!65 &3218701527302989036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -139,9 +136,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0b8f506be2da674b33ea064eec0f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuNiveauTerminer: {fileID: 0}
-  "controlleurR\xE9soltuion": {fileID: 0}
-  "textR\xE9sultat": {fileID: 0}
-  nombreDeCoupJoueur: {fileID: 0}
-  nombreDeCoupMinimum: {fileID: 0}
-  UIgameplay: {fileID: 0}
+  sauvegardeCtrl: {fileID: 0}
+  SceneCtrl: {fileID: 0}
+--- !u!122 &5464326134772620055
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059819982877134667}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4286611584
+  m_Size: 1
