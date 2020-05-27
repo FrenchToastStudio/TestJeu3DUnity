@@ -47,6 +47,7 @@ public class UiController : MonoBehaviour
         sequence = new List<string>();
         procedure = new List<string>();
 
+        // Affichage du meilleur score si une sauvegarde du niveau existe déjà
         if (sauvegardeCtrl.getMeilleurScore() > 1){
             textRecord.SetActive(true);
             textRecordValeur.GetComponent<Text>().text = sauvegardeCtrl.getMeilleurScore().ToString();
@@ -182,15 +183,15 @@ public class UiController : MonoBehaviour
         return listeDestination;
     }
 
+    // Initialise le personnage à sa position de départ
     public void restart (){
-        //sequence = new List<string>();
-        //modificationAffichage = true;
         sequence = listeDestination;
         PersonnageController.SetSequenceComplete(sequence, procedure);
         txtgo.SetActive(true);
         PersonnageController.Restart();
     }
 
+    // Methode qui permet d'effacer une entrée dans la sequence et demande la mise à jour de l'affichage
     public static void ActionToDelete (int position, string nomListe){
         if(nomListe == "ContainerSequence")
             sequence.RemoveAt(position);
