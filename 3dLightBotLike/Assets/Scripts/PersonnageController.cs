@@ -61,7 +61,6 @@ public class PersonnageController : MonoBehaviour
         }
 
         if(estReset == true){
-            Debug.Log("Start position re initialisé");
             // Pour initialiser un restart
             positionDebutNiveau = transform.position;
             positionDebutNiveauRotation = transform.rotation.eulerAngles.y;

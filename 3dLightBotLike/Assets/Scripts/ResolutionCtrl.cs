@@ -53,7 +53,6 @@ public class ResolutionCtrl : MonoBehaviour
         }
 
         nbrMouvement = sequencesPrevu.Count;
-        Debug.Log(String.Join("", sequencesPrevu.ToArray()));
  
     }
 
