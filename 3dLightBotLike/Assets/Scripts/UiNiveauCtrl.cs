@@ -18,7 +18,7 @@ public class UiNiveauCtrl : MonoBehaviour
     }
 
     public void intialiserSauvegarde(){
-        GestionaireSauvegardes.initialiserSauvegarde();
+        sauvegardeCtrl.initialiserSauvegarde();
         uneSauvegarde = GestionaireSauvegardes.Charger();
         rafraichirAffichage();
     }

@@ -31,4 +31,10 @@ public class SauvegardeCtrl : MonoBehaviour
         return sauvegarde.débloqué[sauvegarde.position];
     }
 
+    public void initialiserSauvegarde(){
+        GestionaireSauvegardes.initialiserSauvegarde();
+        sauvegarde = GestionaireSauvegardes.Charger();
+        GestionaireSauvegardes.Sauvegarder(sauvegarde);
+    }
+
 }
