@@ -103,6 +103,9 @@ public class UiController : MonoBehaviour
                     case "Saut":
                         genererBoutonSequence(i, spriteSaute, layoutProcedure);
                         break;
+                    case "Procedure":
+                        genererBoutonSequence(i, spriteProcedure, layoutProcedure);
+                        break;
                 }
             }
         }
@@ -169,8 +172,11 @@ public class UiController : MonoBehaviour
         }
     }
 
-    public void addProcedure(){
-        sequence.Add("Procedure");
+    public void addProcedure(String layoutDestination){
+        if(layoutDestination == "sequence")
+            sequence.Add("Procedure");
+        else
+            procedure.Add("Procedure");
         modificationAffichage =true;
     }
 
