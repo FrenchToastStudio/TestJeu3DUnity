@@ -15,7 +15,7 @@ public class Sauvegarde {
     }
 
     public void ajoutDéblqoué() {
-        if(this.débloqué[this.position + 1] == null) {
+        if(this.débloqué.Count == this.position + 1) {
             this.débloqué.Add(1);
         }
 
